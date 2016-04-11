@@ -15,7 +15,7 @@
     <%= error_messages_for f.object %>
 
     <div class="boxline">
-      <%= f.label :username, "Username:", :class => "required" %>
+      <%= f.label :username, t("UsernameLabel"), :class => "required" %>
       <%= f.text_field :username, :size => 15 %>
       <span class="hint">
         <tt><%= User.username_regex_s %></tt>
@@ -34,19 +34,19 @@
     </div>
 
     <div class="boxline">
-      <%= f.label :password_confirmation, "Confirm Password:",
+      <%= f.label :password_confirmation, t("ConfirmPasswordLabel"),
         :class => "required" %>
       <%= f.password_field :password_confirmation, :size => 40,
         :autocomplete => "off" %>
     </div>
 
     <div class="boxline">
-      <%= f.label :email, "E-mail Address:", :class => "required" %>
+      <%= f.label :email, t("EmailAddressLabel"), :class => "required" %>
       <%= f.email_field :email, :size => 40 %>
     </div>
 
     <div class="boxline">
-      <%= f.label :about, "About:", :class => "required" %>
+      <%= f.label :about, t("AboutLabel"), :class => "required" %>
       <%= f.text_area :about, :size => "100x5", :style => "width: 600px;" %>
     </div>
 
@@ -54,7 +54,7 @@
       <div class="boxline markdown_help_toggler" style="margin-left: 9em;
       width: 600px;">
         <div class="markdown_help_label">
-          Markdown formatting available
+          <%= t :MarkdownFormatting %>
         </div>
 
         <div style="clear: both;"></div>
@@ -64,7 +64,7 @@
     </div>
 
     <p>
-    <%= f.submit "Save Account Settings" %>
+    <%= f.submit t("SaveAccountSettings") %>
     </p>
 
     <br>
@@ -161,60 +161,60 @@
     <br>
 
     <div class="legend">
-      Comment Reply Notification Settings
+      <%= t :CommentReplyNotificationSettings %>
     </div>
 
     <div class="boxline">
-      <%= f.label :email_replies, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_replies, t("ReceiveEmailLabel"), :class => "required" %>
       <%= f.check_box :email_replies %>
     </div>
 
     <div class="boxline">
-      <%= f.label :pushover_replies, "Receive Pushover Alert:",
+      <%= f.label :pushover_replies, t("ReceivePushoverAlertLabel"),
         :class => "required" %>
       <%= f.check_box :pushover_replies %>
       <span class="hint">
-        Requires Pushover subscription above
+        <%= t :RequiresPushover %>
       </span>
     </div>
 
     <br>
 
     <div class="legend">
-      Comment Mention Notification Settings
+      <%= t :CommentMentionNotificationSettings %>
     </div>
 
     <div class="boxline">
-      <%= f.label :email_mentions, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_mentions, t("ReceiveEmailLabel"), :class => "required" %>
       <%= f.check_box :email_mentions %>
     </div>
 
     <div class="boxline">
-      <%= f.label :pushover_mentions, "Receive Pushover Alert:",
+      <%= f.label :pushover_mentions, t("ReceivePushoverAlertLabel"),
         :class => "required" %>
       <%= f.check_box :pushover_mentions %>
       <span class="hint">
-        Requires Pushover subscription above
+        <%= t :RequiresPushover %>
       </span>
     </div>
 
     <br>
 
     <div class="legend">
-      Private Message Notification Settings
+      <%= t :PrivateMessageNotificationSettings %>
     </div>
 
     <div class="boxline">
-      <%= f.label :email_messages, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_messages, t("ReceiveEmailLabel"), :class => "required" %>
       <%= f.check_box :email_messages %>
     </div>
 
     <div class="boxline">
-      <%= f.label :pushover_messages, "Receive Pushover Alert:",
+      <%= f.label :pushover_messages, t("ReceivePushoverAlertLabel"),
         :class => "required" %>
       <%= f.check_box :pushover_messages %>
       <span class="hint">
-        Requires Pushover subscription above
+        <%= t :RequiresPushover %>
       </span>
     </div>
 
@@ -226,7 +226,7 @@
 
     <div class="boxline">
       <%= f.label :show_submitted_story_threads,
-        raw("Show in <a href=\"/threads\">Your Threads</a>:"),
+        raw( t ("ShowInYourThreadsLabel")),
         :class => "required" %>
       <%= f.check_box :show_submitted_story_threads %>
     </div>

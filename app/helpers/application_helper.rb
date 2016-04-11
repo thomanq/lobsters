@@ -148,24 +148,24 @@ module ApplicationHelper
     ago = ""
     secs = (Time.current - time).to_i
     if secs <= 5
-      ago = "just now"
+      ago = t("justNow")
     elsif secs < 60
-      ago = "less than a minute ago"
+      ago = t("lessThanAMinuteAgo")
     elsif secs < (60 * 60)
       mins = (secs / 60.0).floor
-      ago = "#{mins} #{'minute'.pluralize(mins)} ago"
+      ago = t("minutesAgo", :count => mins)
     elsif secs < (60 * 60 * 48)
       hours = (secs / 60.0 / 60.0).floor
-      ago = "#{hours} #{'hour'.pluralize(hours)} ago"
+      ago = t("hoursAgo", :count => hours)
     elsif secs < (60 * 60 * 24 * 30)
       days = (secs / 60.0 / 60.0 / 24.0).floor
-      ago = "#{days} #{'day'.pluralize(days)} ago"
+      ago = t("daysAgo", :count => days)
     elsif secs < (60 * 60 * 24 * 365)
       months = (secs / 60.0 / 60.0 / 24.0 / 30.0).floor
-      ago = "#{months} #{'month'.pluralize(months)} ago"
+      ago = t("monthsAgo", :count => months)
     else
       years = (secs / 60.0 / 60.0 / 24.0 / 365.0).floor
-      ago = "#{years} #{'year'.pluralize(years)} ago"
+      ago = t("yearsAgo", :count => years)
     end
 
     span_class = ''

@@ -1,0 +1,296 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+
+  # app/views/ban_notification/notify.text.erb
+  
+  
+  # app/views/comments/_comment.html.erb
+  link: Link
+  reply: antworten
+  commentedOn: über
+  previewed: previewed
+  
+  # app/views/comments/_commentbox.html.erb
+  MarkdownFormatting: "Markdown-Formatierung verfügbar"
+  LoginToComment: "Sie müssen eingeloggt sein, um einen Kommentar zu hinterlassen."
+  Post: Senden
+  Update: Aktualisieren
+  Preview: Vorschau
+  Cancel: Abbrechen
+  
+  # app/views/comments/_postedreply.html.erb
+  
+  
+  # app/views/comments/index.html.erb
+  
+  
+  # app/views/comments/index.rss.erb
+  
+  
+  # app/views/comments/threads.html.erb
+  
+  
+  # app/views/email_message/notify.text.erb
+  
+  
+  # app/views/email_reply/mention.text.erb
+  
+  
+  # app/views/email_reply/reply.text.erb
+  
+  
+  # app/views/filters/index.html.erb
+  FilteredTags: "Tags ausblenden"
+  HideStories: "To hide stories from the home page that have been tagged with certain <a href=\"/tags\">tags</a>, check them below." 
+  HideStoriesNotLoggedIn:  "Since you are not logged in, your filters will be stored in a long-lasting browser cookie.  To permanently store your tag filters and have them work across browsers, <a href=\"/login\">login</a> to your account."
+  Hide: Ausblenden
+  Tag: Tag
+  Description: Beschreibung
+  Stories: Artikel
+  SaveFilters: "Filter speichern"
+  
+  # app/views/global/_markdownhelp.html.erb
+  
+  
+  # app/views/hats/build_request.html.erb
+  
+  
+  # app/views/hats/index.html.erb
+  
+  
+  # app/views/hats/requests_index.html.erb
+  
+  
+  # app/views/home/index.html.erb
+  
+  
+  # app/views/home/rss.erb
+  Page: Seite
+  TheNewestStories: "<em>The <a href=\"/newest\">newest</a> stories with a random sampling of
+    recently submitted stories that have not yet reached the front page.</em>"
+    
+  # app/views/invitation_mailer/invitation.text.erb
+  
+  
+  # app/views/invitation_request_mailer/invitation_request.text.erb
+  
+  
+  # app/views/invitations/build.html.erb
+  
+  
+  # app/views/invitations/index.html.erb
+  
+  
+  # app/views/layouts/application.html.erb
+  Home: Home
+  Recent: Neue Artikel
+  Comments: Kommentare
+  SubmitStory: Artikel hinzufügen
+  YourThreads: Deine Threads
+  About: Über
+  ModerationLog: Moderation Log
+  Chat: Chat
+  Privacy: Datenschutz
+  Login: Login
+  LogoutConfirmation: "Sind sie sicher, dass Sie sich ausloggen möchten?"
+  Messages: Deine Nachrichten
+  NewMessage: Neue Nachricht
+  Filters: "Tag Filter"
+  
+  # app/views/login/forgot_password.html.erb
+  
+  # app/views/login/index.html.erb
+  LoginEmailOrUsername: "E-mail oder Benutzername:"
+  LoginPassword: "Passwort:"
+  ForgotPassword: "Passwort vergessen oder Account gelöscht?"
+  Login: Login
+  ResetPassword: "Passwort zurücksetzen"
+  NotYetAUser: "Noch keinen Account? Signup is by invitation only to combat spam and increase accountability.  If you know <a href=\"/u/\">a current user</a> of the site, ask them for an invitation or"
+  NotYetAUserInvitationRequest: "<a href=\"/invitations/request\">request one publicly</a>."
+  NotYetAUserChatInvitation: "request one in <a href=\"/chat\">chat</a>."
+  
+  # app/views/login/set_new_password.html.erb
+  
+  
+  # app/views/messages/index.html.erb
+  ViewReceived: zur Inbox
+  ViewSent: zu den verschickten Nachrichten
+  PrivateMessages: Private Nachrichten
+  Sent: ""
+  NoReceivedMessage: "Sie haben keine private Nachricht erhalten."
+  NoSentMessage: "Sie haben keine private Nachricht verschickt."
+  ComposeMessage: "Nachricht verfassen"
+  SendToLabel: "An:"
+  SubjectLabel: "Betreff:"
+  MessageLabel: "Nachricht:"
+  SendMessage: "Nachricht verschicken"
+  
+  # app/views/messages/show.html.erb
+  
+  
+  # app/views/moderations/index.html.erb
+  
+  
+  # app/views/password_reset/password_reset_link.text.erb
+  
+  
+  # app/views/search/index.html.erb
+  Search: Suche
+  Include: Filtern nach
+  OrderBy: Sortieren nach
+  IncludeAll: Allem   
+  IncludeStories: Beiträgen   
+  IncludeComments: Kommentaren
+  OrderByRelevance: Relevanz   
+  OrderByNewest: Veröffentlichungsdatum  
+  OrderByPoints: Punkten
+  
+  # app/views/settings/index.html.erb
+  ViewProfile: "Profil ansehen"
+  AccountSettings: Account-Einstellungen
+  UsernameLabel: "Benutzername:"
+  NewPasswordLabel: "Neues Passwort:"
+  ConfirmPasswordLabel: "Passwort wiederholen:"
+  EmailAddressLabel: "E-Mail-Adresse:"
+  AboutLabel: "Über mich"
+  SaveAccountSettings: "Account-Einstellungen speichern"
+  NotificationSettings: Benachrichtigungseinstellungen
+  PushoverHint: "Für optionale Benachrichtigungseinsoptionen. Siehe unten."
+  ManagePushoverSubscription: "Pushover-Abonnement verwalten"
+  SubscribeWithPushover: "Pushover abonnieren"
+  CommentReplyNotificationSettings: "Benachrichtigungseinstellungen - Antwort auf Kommentare"
+  CommentMentionNotificationSettings: "Benachrichtigungseinstellungen - In Kommentaren erwähnt"
+  PrivateMessageNotificationSettings: "Benachrichtigungseinstellungen - private Nachricht"
+  ReceiveEmailLabel: "E-Mail bekommen:"
+  ReceivePushoverAlertLabel: "Pushover-Benachrichtigung bekommen:"
+  RequiresPushover: "benötigt Pushover-Abonnement"
+  ShowInYourThreadsLabel: "Unter <a href=\"/threads\">Deinen Threads</a> anzeigen"
+  # app/views/signup/index.html.erb
+  
+  
+  # app/views/signup/invite.html.erb
+  
+  
+  # app/views/signup/invited.html.erb
+  
+  
+  # app/views/stories/_form.html.erb
+  FetchTitle: "Titel ermitteln"
+  UrlLabel: "URL:"
+  TitleLabel: "Titel:"
+  TagsLabel: "Tags:"
+  AuthorLabel: "Autor:"
+  Textlabel: "Text:"
+  OptionalText: "Optional when submitting a URL; please see guidelines"
+  SubmitTo: "Teile auf"
+  GuidelinesButton: "Story submission policy"
+  GuidelinesText: >
+          <li><p>
+          To be able to easily submit a page you're viewing in your browser
+          to %s, drag the bookmarklet to the right
+          to your bookmark bar.  You'll be taken to this page with the viewed
+          page's URL and title.
+          </p></li>
+          <li><p>
+          When submitting a URL, the text field is optional and should only
+          be used when additional context or explanation of the URL is
+          needed.  Commentary or opinion should be reserved for a comment,
+          so that it can be voted on separately from the story.
+          </p></li>
+          <li><p>
+          Do not editorialize story titles, but when the original story's
+          title has no context or is unclear, please change it.  <strong>Please
+          remove extraneous components from titles such as the name of the
+          site or section.</strong>
+          </p></li>
+          <li><p>
+          If no tags clearly apply to the story you are submitting, chances
+          are it does not belong here.  Do not overreach with tags if they
+          are not the primary focus of the story.
+          </p></li>
+          <li><p>
+          When the story being submitted is more than a year or so old,
+          please add the year the story was written to the post title in
+          parentheses.
+          </p></li>"
+
+  Author: Autor
+  Iam: "Ich bin"
+  SubmitterIs: "Der Submitter ist"
+  StoryAuthor: "der Autor des geteilten Artikels."
+  
+  # app/views/stories/_listdetail.html.erb
+  minutesAgo: 
+    one: "vor 1 Minute"
+    few: "vor %{count} Minuten"
+    many: "vor %{count} Minuten"
+    other: "vor %{count} Minuten"
+  hoursAgo: 
+    one: "vor 1 Stunde"
+    few: "vor %{count} Stunden"
+    many: "vor %{count} Stunden"  
+    other: "vor %{count} Stunden"  
+  daysAgo: 
+    one: "vor 1 Tag"
+    few: "vor %{count} Tagen"
+    many: "vor %{count} Tagen"
+    other: "vor %{count} Tagen"
+  monthsAgo: 
+    one: "vor 1 Monat"
+    few: "vor %{count} Monaten"
+    many: "vor %{count} Monaten"
+    other: "vor %{count} Monaten"
+  yearsAgo: 
+    one: "vor 1 Jahr"
+    few: "vor %{count} Jahren"
+    many: "vor %{count} Jahren"
+    other: "vor %{count} Jahren"
+  authoredby: "geschrieben von"
+  via: "gepostet von"
+  justNow: "gerade eben"
+  lessThanAMinuteAgo: "vor < 1 Minute"
+  edit: bearbeiten
+  delete: löschen
+  undelete: wiederherstellen
+  hide: ausblenden
+  unhide: einblenden
+  cached: gecachede Version
+  nocomments: kein Kommentar
+  comments: 
+    one: "1 Kommentar"
+    few: "%{count} Kommentare"
+    many: "%{count} Kommentare"
+    other: "%{count} Kommentare"
+  DeleteConfirmation: "Sind Sie sicher, dass Sie diesen Thread löschen wollen?"
+  UndeleteConfirmation: "Sind Sie sicher, dass Sie diesen Thread nicht mehr löschen wollen?"
+  
+  # app/views/stories/edit.html.erb
+  
+  
+  # app/views/stories/new.html.erb
+  SubmitStory: "Artikel posten"
+  Submit: Submit
+  
+  # app/views/stories/show.html.erb
+  
+  
+  # app/views/stories/suggest.html.erb
+  
+  
+  # app/views/tags/index.html.erb
+  
+  
+  # app/views/users/_invitationform.html.erb
+  
+  
+  # app/views/users/list.html.erb
+  
+  
+  # app/views/users/show.html.erb
+  
+  
+  # app/views/users/tree.html.erb
+  
+  

@@ -102,18 +102,18 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
       <% end %>
       <% if story.previewing %>
         <% if story.user_is_author? %>
-          authored by
+          <%=t :authoredby %>
         <% else %>
-          via
+          <%=t :via %>
         <% end %>
         <a class="<%= story.html_class_for_user %>"><%=
           story.user.username %></a>
-        just now
+        <%=t :justNow %>
       <% else %>
         <% if story.user_is_author? %>
-          authored by
+          <%=t :authoredby %>
         <% else %>
-          via
+          <%=t :via %>
         <% end %>
         <a href="/u/<%= story.user.username %>" class="<%=
           story.html_class_for_user %>"><%= story.user.username %></a>
@@ -137,10 +137,10 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
             | <a class="flagger">flag</a>
           <% end %>
           <% if story.is_hidden_by_cur_user %>
-            | <%= link_to "unhide", story_unhide_path(story.short_id),
+            | <%= link_to t("unhide"), story_unhide_path(story.short_id),
               :class => "hider" %>
           <% else %>
-            | <%= link_to "hide", story_hide_path(story.short_id),
+            | <%= link_to t("hide"), story_hide_path(story.short_id),
               :class => "hider" %>
           <% end %>
           <% if defined?(single_story) && single_story && story.hider_count > 0 %>
@@ -157,17 +157,16 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
         <% if story.url.present? %>
           |
           <a href="<%= story.archive_url %>" rel="nofollow"
-            target="_blank">cached</a>
+            target="_blank"><%=t :cached %></a>
         <% end %>
         <% if !story.is_gone? %>
           <span class="comments_label">
             |
             <a href="<%= story.comments_path %>">
             <% if story.comments_count == 0 %>
-              no comments
-            <% else %>
-              <%= story.comments_count %>
-                comment<%= story.comments_count == 1 ? "" : "s" %>
+              <%=t :nocomments %>
+            <% else %> 
+                <%= t("comments", :count => story.comments_count) %>
             <% end %>
             </a>
           </span>

@@ -10,15 +10,15 @@
 <div class="box wide">
   <div class="legend" style="float: right;">
     <% if @direction == :out %>
-      <a href="/messages">View Received</a>
+      <a href="/messages"><%= t :ViewReceived %></a>
     <% else %>
-      <a href="/messages/sent">View Sent</a>
+      <a href="/messages/sent"><%= t :ViewSent %></a>
     <% end %>
   </div>
   <div class="legend">
-    Private Messages
+    <%= t :PrivateMessages %>
     <% if @direction == :out %>
-      Sent
+      <%= t :Sent %>
     <% end %>
   </div>
 
@@ -58,39 +58,38 @@
     <% end %>
   <% else %>
     <p>
-    You do not have any <%= @direction == :in ? "" : "sent" %> private
-      messages.
+        <%= @direction == :in ?  t(:NoReceivedMessage) : t(:NoSentMessage) %>
     </p>
   <% end %>
 
   <br>
 
   <div class="legend">
-    Compose Message
+    <%= t :ComposeMessage %>
   </div>
 
   <%= form_for @new_message, :method => :post do |f| %>
     <%= error_messages_for @new_message %>
 
     <div class="boxline">
-      <%= f.label :recipient_username, "To:", :class => "required" %>
+      <%= f.label :recipient_username, t("SendToLabel"), :class => "required" %>
       <%= f.text_field :recipient_username, :size => 20 %>
     </div>
 
     <div class="boxline">
-      <%= f.label :subject, "Subject:", :class => "required" %>
+      <%= f.label :subject, t("SubjectLabel"), :class => "required" %>
       <%= f.text_field :subject, :style => "width: 500px;",
         :maxlength => 100 %>
     </div>
 
     <div class="boxline">
-      <%= f.label :body, "Message:", :class => "required" %>
+      <%= f.label :body, t("MessageLabel"), :class => "required" %>
       <%= f.text_area :body, :style => "width: 500px;", :rows => 5 %>
     </div>
 
     <div class="boxline">
       <p></p>
-      <%= submit_tag "Send Message" %>
+      <%= submit_tag t("SendMessage") %>
     </div>
   <% end %>
 </div>
