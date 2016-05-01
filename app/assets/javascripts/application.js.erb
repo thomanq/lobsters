@@ -25,17 +25,19 @@ var _Lobsters = Class.extend({
 
     var li = $(hiderEl).closest(".story, .comment");
     var act;
+    var currentAction = hiderEl.innerHTML;
+    var oppositeAction = hiderEl.getAttribute("data-opposite-action");
 
     if (li.hasClass("hidden")) {
       act = "unhide";
-      li.removeClass("hidden");
-      hiderEl.innerHTML = "hide";
+      li.removeClass("hidden");    
     }
     else {
       act = "hide";
       li.addClass("hidden");
-      hiderEl.innerHTML = "unhide";
     }
+    hiderEl.setAttribute("data-opposite-action", currentAction);
+    hiderEl.innerHTML = oppositeAction;
 
     $.post("/stories/" + li.attr("data-shortid") + "/" + act);
   },

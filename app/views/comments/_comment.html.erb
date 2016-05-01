@@ -65,13 +65,12 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
       <% end %>
 
       <% if comment.previewing %>
-        <%=t :previewed %>
-        <%=t :justNow %>
+        <%=t :previewedJustNow %>
       <% else %>
         <% if comment.has_been_edited? %>
-          edited
+          <%=t :edited %>
         <% elsif comment.is_from_email? %>
-          e-mailed
+          <%=t :emailed %>
         <% end %>
         <% if defined?(is_unread) && is_unread %>
           <% mark_unread = true %>

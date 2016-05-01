@@ -45,8 +45,7 @@
   <div class="box">
     <p>
     <div class="legend">
-      <%= @search.total_results %> result<%= @search.total_results == 1 ? "" :
-        "s" %> for "<%= @search.q %>"
+      <%= t("ResultsFor", :count => @search.total_results) %> "<%= @search.q %>"
     </div>
     </p>
   </div>

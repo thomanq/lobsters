@@ -221,7 +221,7 @@
     <br>
 
     <div class="legend">
-      Submitted Story Comment Settings
+      <%= t :SubmittedStoryCommentSettings %>
     </div>
 
     <div class="boxline">
@@ -234,28 +234,22 @@
     <br>
 
     <div class="legend">
-      Mailing List Settings
+      <%= t :MailingListSettings %>
     </div>
 
     <p>
-    When enabled, you will receive all newly submitted stories and comments to
-    your e-mail address entered above, except the stories and comments filtered
-    by your <a href="/filters">tag filters</a>.
-    All e-mail messages will appear to be sent to your private list address
-    shown below which you can filter on, and e-mails you send to that address
-    will be posted under your account on this website.  You should keep your
-    unique list address private to prevent others from posting comments as you.
+        <%= raw t :MailingListSettingsText %>
     </p>
 
     <div class="boxline">
-      <%= f.label :mailing_list_mode, "Receive List E-mails:",
+      <%= f.label :mailing_list_mode, t("ReceiveListEMailsLabel"),
         :class => "required" %>
-      <%= f.select :mailing_list_mode, [ [ "No e-mails", 0 ],
-        [ "All stories and comments", 1 ], [ "Only stories", 2 ] ] %>
+      <%= f.select :mailing_list_mode, [ [ t("NoEmails"), 0 ],
+        [ t("AllStoriesAndComments"), 1 ], [ t("OnlyStories"), 2 ] ] %>
     </div>
 
     <div class="boxline">
-      <label class="required">List Address:</label>
+      <label class="required"><%= t :ListAddressLabel %></label>
       <span>
       <tt><%= Rails.application.shortname %>-<%=
         @edit_user.mailing_list_token %>@<%= Rails.application.domain %></tt>
@@ -265,22 +259,22 @@
     <br>
 
     <div class="legend">
-      Miscellaneous Settings
+      <%= t :MiscellaneousSettings %>
     </div>
 
     <div class="boxline">
-      <%= f.label :show_story_previews, "Show Story Previews:",
+      <%= f.label :show_story_previews, t("ShowStoryPreviewsLabel"),
         :class => "required" %>
       <%= f.check_box :show_story_previews %>
     </div>
 
     <div class="boxline">
-      <%= f.label :show_avatars, "Show User Avatars:", :class => "required" %>
+      <%= f.label :show_avatars, t("ShowUserAvatarsLabel"), :class => "required" %>
       <%= f.check_box :show_avatars %>
     </div>
 
     <br>
-    <%= f.submit "Save All Settings" %>
+    <%= f.submit t("SaveAllSettings") %>
   <% end %>
 
   <br>
@@ -288,7 +282,7 @@
 
   <a name="invite"></a>
   <div class="legend">
-    Invite a New User
+    <%= t :InviteNewUser %>
   </div>
 
   <% if @user.can_invite? %>

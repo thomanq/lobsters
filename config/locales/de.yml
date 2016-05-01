@@ -2,6 +2,32 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 de:
+  # app/helpers/application_helper.rb
+  minutesAgo: 
+    one: "vor 1 Minute"
+    few: "vor %{count} Minuten"
+    many: "vor %{count} Minuten"
+    other: "vor %{count} Minuten"
+  hoursAgo: 
+    one: "vor 1 Stunde"
+    few: "vor %{count} Stunden"
+    many: "vor %{count} Stunden"  
+    other: "vor %{count} Stunden"  
+  daysAgo: 
+    one: "vor 1 Tag"
+    few: "vor %{count} Tagen"
+    many: "vor %{count} Tagen"
+    other: "vor %{count} Tagen"
+  monthsAgo: 
+    one: "vor 1 Monat"
+    few: "vor %{count} Monaten"
+    many: "vor %{count} Monaten"
+    other: "vor %{count} Monaten"
+  yearsAgo: 
+    one: "vor 1 Jahr"
+    few: "vor %{count} Jahren"
+    many: "vor %{count} Jahren"
+    other: "vor %{count} Jahren"
 
   # app/views/ban_notification/notify.text.erb
   
@@ -10,11 +36,14 @@ de:
   link: Link
   reply: antworten
   commentedOn: über
-  previewed: previewed
+  previewedJustNow: "previewed just now"
+  edited: "edited"
+  emailed: "e-mailed"
   
   # app/views/comments/_commentbox.html.erb
   MarkdownFormatting: "Markdown-Formatierung verfügbar"
   LoginToComment: "Sie müssen eingeloggt sein, um einen Kommentar zu hinterlassen."
+  PutOnHatLabel: "Put on hat:"
   Post: Senden
   Update: Aktualisieren
   Preview: Vorschau
@@ -33,7 +62,7 @@ de:
   
   
   # app/views/email_message/notify.text.erb
-  
+  ReplyAtLabel: "Antworten unter:"
   
   # app/views/email_reply/mention.text.erb
   
@@ -43,7 +72,7 @@ de:
   
   # app/views/filters/index.html.erb
   FilteredTags: "Tags ausblenden"
-  HideStories: "To hide stories from the home page that have been tagged with certain <a href=\"/tags\">tags</a>, check them below." 
+  HideStories: "Um Threads auf der Homepage auszublenden, die mit einem bestimmten <a href=\"/tags\">Tag</a> gekennzeichnet wurden, haken Sie bitte die entspechende Checkbox unten an." 
   HideStoriesNotLoggedIn:  "Since you are not logged in, your filters will be stored in a long-lasting browser cookie.  To permanently store your tag filters and have them work across browsers, <a href=\"/login\">login</a> to your account."
   Hide: Ausblenden
   Tag: Tag
@@ -52,8 +81,22 @@ de:
   SaveFilters: "Filter speichern"
   
   # app/views/global/_markdownhelp.html.erb
-  
-  
+  emphasizedText: "hervorgehobener Text"
+  surroundTextWithAsterisks: "Text in <tt>*Sternchen*</tt> setzen"
+  strongText: "fett geschrieben"
+  struckThrough: "gestrichen"
+  fixedWidth: "feste Breite"
+  surroundTextWithTwoAsterisks: "Text in <tt>**Doppelsternchen**</tt> setzen"
+  surroundTextWithTwoTilde: "Text in <tt>~~Doppeltilde~~</tt> setzen"
+  surroundTextWithBackticks: "Text in <tt>`Backticks`</tt> setzen"
+  linkedText: "verlinkter Text"
+  linkedTextAlternative: "oder nur die URL angeben, um einen Link ohne Titel hinzuzufügen"
+  quotedText: "Zitat"
+  prefixQuotedTextWith: "<tt>&gt;</tt>-Zeichen vorantstellen"
+  preText: "<pre>Text</pre>"
+  preTextHint: "mindestens<tt>&nbsp;&nbsp;&nbsp;&nbsp;4 Leerzeichen</tt> voranstellen"
+  inlineImage: "Bild auf derselben Zeile"
+  inlineImageHint: "<tt>![alt-Text](http://example.com/image.jpg)</tt> (nur im Artikeltext erlaubt)"
   # app/views/hats/build_request.html.erb
   
   
@@ -78,7 +121,12 @@ de:
   
   
   # app/views/invitations/build.html.erb
-  
+  RequestAnInvitation: "Eine Einladung anfordern"
+  PublicRequestText: "Wenn Sie keinen <a href=\"/u/\">registrierten Benutzer</a> kennen/finden können, bei dem Sie eine Einladung anfordern können, können Sie Ihre Anfrage öffentlich stellen. So wird Ihr Name und Ihr Kommentar allen eingeloggten Benutzern angezeigt und diese können Ihnen eine Einladung schicken, falls sie Sie erkennen."
+  EmailMustBeValidText: "Ihre E-Mail-Adresse muss gültig sein und Sie müssen sie zuerst bestätigen, indem Sie den Link aufrufen, der Ihnen per E-Mail verschickt wird, bevor Ihre Anfrage auf der Seite veröffentlicht wird. Ihre E-Mail-Adresse wird bei anderen Nutzern nicht angezeigt (außer bei Moderatoren)."
+  NameLabel: "Name:"
+  UrlToVerifyYou: "URL, um Sie zu verifizieren (persönliche Webseite, Github-Account, usw.)"
+  RequestInvitation: "Einladung anfordern"
   
   # app/views/invitations/index.html.erb
   
@@ -100,19 +148,22 @@ de:
   Filters: "Tag Filter"
   
   # app/views/login/forgot_password.html.erb
+  ResetPasswordText: "Wenn Sie Ihr Passwort vergessen haben, geben Sie Ihre E-Mail-Adresse oder Ihren Benutzernamen an und eine Anleitung wird Ihnen per E-Mail zugeschickt."
   
   # app/views/login/index.html.erb
-  LoginEmailOrUsername: "E-mail oder Benutzername:"
-  LoginPassword: "Passwort:"
+  EmailOrUsernameLabel: "E-Mail oder Benutzername:"
+  PasswordLabel: "Passwort:"
   ForgotPassword: "Passwort vergessen oder Account gelöscht?"
   Login: Login
   ResetPassword: "Passwort zurücksetzen"
-  NotYetAUser: "Noch keinen Account? Signup is by invitation only to combat spam and increase accountability.  If you know <a href=\"/u/\">a current user</a> of the site, ask them for an invitation or"
-  NotYetAUserInvitationRequest: "<a href=\"/invitations/request\">request one publicly</a>."
-  NotYetAUserChatInvitation: "request one in <a href=\"/chat\">chat</a>."
+  NotYetAUser: "Noch keinen Account? Die Registrierung erfolgt nur über Einladungen, um Spam zu verhindern und um die Verantwortlichkeit zu fördern.  Wenn Sie jemanden kennen, der bereits einen <a href=\"/u/\">Benutzer-Account</a> besitzt, bitten Sie ihn/sie um eine Einladung oder "
+  NotYetAUserInvitationRequest: "<a href=\"/invitations/request\">fordern Sie eine öffentlich an</a>."
+  NotYetAUserChatInvitation: "fördern Sie eine im <a href=\"/chat\">Chat</a> an."
   
   # app/views/login/set_new_password.html.erb
-  
+  SetNewPassword: "Neues Passwort setzen"
+  NewPasswordLabel: "Neues Passwort:"
+  NewPasswordAgainLabel: "(wiederholen):"
   
   # app/views/messages/index.html.erb
   ViewReceived: zur Inbox
@@ -128,9 +179,30 @@ de:
   SendMessage: "Nachricht verschicken"
   
   # app/views/messages/show.html.erb
-  
+  BackToSentMessages: "zurück zu den verschicken Nachrichten"
+  BackToMessages: "zurück zur Inbox"
+  SentFrom: "Absender"
+  administrator: Administrator
+  moderator: Moderator
+  DeleteMessage: "Nachricht löschen"
+  KeepAsNew: "Als neu kennzeichnen"
+  ComposeReply: "Antwort verfassen"
+  IsReplyTo: "An"
+  SendMessage: "Nachricht verschicken"
+  MessageCannotBeRepliedTo: "Diese Nachricht kann nicht beantwortet werden. Bitte kontaktatieren Sie einen Moderator."
   
   # app/views/moderations/index.html.erb
+  ModerationLog: "Moderation-Log"
+  DateTime: "Datum/Uhrzeit"
+  Moderator: Moderator
+  StoryCommentUserActionReason: "Artikel/Kommentar/Benutzer, Handlung, Grund"
+  StoryLabel: "Artikel:"
+  CommentBy: "Kommentar von"
+  CommentOn: "über"
+  User: Benutzer
+  DeletedUser: "gelöscht"
+  ActionLabel: "Handlung:"
+  ReasonLabel: "Grund:"
   
   
   # app/views/password_reset/password_reset_link.text.erb
@@ -146,6 +218,12 @@ de:
   OrderByRelevance: Relevanz   
   OrderByNewest: Veröffentlichungsdatum  
   OrderByPoints: Punkten
+  ResultsFor:
+    zero: "kein Ergebnis für"
+    one: "1 Ergebnis für"
+    few: "%{count} Ergebnisse für"
+    many: "%{count} Ergebnisse für"
+    other: "%{count} Ergebnisse für"
   
   # app/views/settings/index.html.erb
   ViewProfile: "Profil ansehen"
@@ -167,6 +245,40 @@ de:
   ReceivePushoverAlertLabel: "Pushover-Benachrichtigung bekommen:"
   RequiresPushover: "benötigt Pushover-Abonnement"
   ShowInYourThreadsLabel: "Unter <a href=\"/threads\">Deinen Threads</a> anzeigen"
+  SubmittedStoryCommentSettings: "Kommentar-Einstellungen bei geposteten Threads"
+  MailingListSettings: "Mailing-Liste-Einstellungen"
+  MailingListSettingsText: "When enabled, you will receive all newly submitted stories and comments to
+    your e-mail address entered above, except the stories and comments filtered
+    by your <a href=\"/filters\">Tag Filters</a>.
+    All e-mail messages will appear to be sent to your private list address
+    shown below which you can filter on, and e-mails you send to that address
+    will be posted under your account on this website.  You should keep your
+    unique list address private to prevent others from posting comments as you.When enabled, you will receive all newly submitted stories and comments to
+    your e-mail address entered above, except the stories and comments filtered
+    by your <a href=\"/filters\">tag filters</a>.
+    All e-mail messages will appear to be sent to your private list address
+    shown below which you can filter on, and e-mails you send to that address
+    will be posted under your account on this website.  You should keep your
+    unique list address private to prevent others from posting comments as you."
+  ReceiveListEMailsLabel: "Mailing-Liste abonnieren:"
+  NoEmails: "keine E-Mails"
+  AllStoriesAndComments: "alle Artikel und Kommentare"
+  OnlyStories: "nur Artikel"
+  ListAddressLabel: "Listenadresse:"
+  MiscellaneousSettings: "Sonstige Einstellungen"
+  ShowStoryPreviewsLabel: "Artikelvorschau anzeigen:"
+  ShowUserAvatarsLabel: "Benutzer-Avatars anzeigen:"
+  SaveAllSettings: "Alle Einstellungen speichern"
+  InviteNewUser: "Einen neuen Nutzer einladen"
+  DeleteAccount: "Account löschen"
+  DeleteAccountText: "Um Ihren Account zu löschen, geben Sie bitte Ihr Passwort ein.
+    Ihr Account wird mit dem Status \"gelöscht\" versehen. 
+    Ihre Kommentare werden als gelöscht gekennzeichnet und können nicht mehr von anderen Nutzern gelesen werden. Ihre persönlichen Nachrichten werden gelöscht. Ihre geteilten Inhalte werden nicht gelöscht.
+    Ihr Benutzername bleibt reserviert und kann nicht mit einem anderen Account verknüpft werden."
+  VerifyPasswordLabel: "Passwort überprüfen"
+  DeleteMyAccount: "Account unwiderruflich löschen"
+  
+  
   # app/views/signup/index.html.erb
   
   
@@ -183,9 +295,9 @@ de:
   TagsLabel: "Tags:"
   AuthorLabel: "Autor:"
   Textlabel: "Text:"
-  OptionalText: "Optional when submitting a URL; please see guidelines"
+  OptionalText: "Optional wenn Sie einen Link teilen; siehe bitte Richtlinien"
   SubmitTo: "Teile auf"
-  GuidelinesButton: "Story submission policy"
+  GuidelinesButton: "Richlinien zum Teilen von Inhalten"
   GuidelinesText: >
           <li><p>
           To be able to easily submit a page you're viewing in your browser
@@ -222,31 +334,6 @@ de:
   StoryAuthor: "der Autor des geteilten Artikels."
   
   # app/views/stories/_listdetail.html.erb
-  minutesAgo: 
-    one: "vor 1 Minute"
-    few: "vor %{count} Minuten"
-    many: "vor %{count} Minuten"
-    other: "vor %{count} Minuten"
-  hoursAgo: 
-    one: "vor 1 Stunde"
-    few: "vor %{count} Stunden"
-    many: "vor %{count} Stunden"  
-    other: "vor %{count} Stunden"  
-  daysAgo: 
-    one: "vor 1 Tag"
-    few: "vor %{count} Tagen"
-    many: "vor %{count} Tagen"
-    other: "vor %{count} Tagen"
-  monthsAgo: 
-    one: "vor 1 Monat"
-    few: "vor %{count} Monaten"
-    many: "vor %{count} Monaten"
-    other: "vor %{count} Monaten"
-  yearsAgo: 
-    one: "vor 1 Jahr"
-    few: "vor %{count} Jahren"
-    many: "vor %{count} Jahren"
-    other: "vor %{count} Jahren"
   authoredby: "geschrieben von"
   via: "gepostet von"
   justNow: "gerade eben"
@@ -271,7 +358,7 @@ de:
   
   # app/views/stories/new.html.erb
   SubmitStory: "Artikel posten"
-  Submit: Submit
+  Submit: Posten
   
   # app/views/stories/show.html.erb
   
@@ -283,12 +370,51 @@ de:
   
   
   # app/views/users/_invitationform.html.erb
+  InvitationFormText: "Einladungen sind unbegrenzt, aber Personen, die Sie einladen, werden mit Ihrem Account in dem <a href=\"/u\">Benutzer-Baum</a> verbunden und Sie können die Verantwortung dafür tragen müssen, falls diese Probleme machen. Berücksichtigen Sie dies bitte mit, sollten Sie jemanden einladen, den Sie nicht persönlich kennen."
+  MemoToUserLabel: "Nachricht an den Benutzer:"
+  SendInvitation: "Einladung verschicken"
   
   
   # app/views/users/list.html.erb
   
   
   # app/views/users/show.html.erb
+  StatusLabel: "Status:"
+  BannedAdministrator: "Gebannter Administrator"
+  BannedModerator: "Gebannter Moderator"
+  BannedUser: "Gebannter Benutzer"
+  InactiveAdministrator: "Inaktiver Administrator"
+  InactiveModerator: "Inaktiver Moderator"
+  InactiveUser: "Inaktiver Benutzer"
+  ActiveAdministrator: "Aktiver Administrator"
+  ActiveModerator: "Aktiver Moderator"
+  ActiveUser: "Aktiver Benutzer"
+  JoinedLabel: "Mitglied seit:"
+  ByInvitationFrom: "eingeladen von:"
+  StoriesSubmittedLabel: "Gepostete Artikel"
+  CommentsPostedLabel: "Gepostete Kommentare"
+  AboutLabel: "Über mich:"
+  AboutText: "Ein Mysterium..."
+  AdministrativeInformation: "Administrative Informationen"
+  BannedLabel: "Gebannt:"
+  BannedBy: "von"
+  HatsLabel: "Hats:"
+  LeftLabel: "Kein mitglied seit:"
+  KarmaLabel: "Karma:"
+  averaging: "durchschnittlich"
+  perStoryAndComment: "pro Artikel/Kommentar"
+  mostCommonlyTagged: "meistbenutztes Tag:"
+  Comment: "Kommentar"
+  CommentBy: "von"
+  StoryBy: "von"
+  On: "über"
+  RecentVotesLabel: "Recent votes:"
+  AdministrativeActions: "Administrative Tätigkeiten"
+  UnbanUser: "Unban User"
+  BanUserText: "Banning a user will send an e-mail to the user with the reason below,
+        with your e-mail address as the Reply-To so the user can respond."
+  ReasonLabel: "Grund:"
+  BanUser: "Benutzer bannen"
   
   
   # app/views/users/tree.html.erb

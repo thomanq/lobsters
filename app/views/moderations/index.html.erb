@@ -1,6 +1,6 @@
 <div class="box wide">
   <div class="legend">
-    Moderation Log
+    <%= t :ModerationLog %>
   </div>
 
   <%= form_tag(moderations_path, :method => :get) do |f| %>
@@ -16,9 +16,9 @@
 
   <table class="data" width="100%" cellspacing=0>
   <tr>
-    <th style="min-width: 150px;">Date/Time</th>
-    <th>Moderator</th>
-    <th>Story/Comment/User, Action, Reason</th>
+    <th style="min-width: 150px;"><%= t :DateTime %></th>
+    <th><%= t :Moderator %></th>
+    <th><%= t :StoryCommentUserActionReason %></th>
   </tr>
   <% bit = 0 %>
   <% @moderations.each do |mod| %>
@@ -31,32 +31,32 @@
           <em>(Users)</em>
         <% end %></td>
       <td><% if mod.story %>
-          <a href="<%= mod.story.comments_path %>">Story: <%= mod.story.title
+          <a href="<%= mod.story.comments_path %>"><%= t :StoryLabel %> <%= mod.story.title
             %></a>
         <% elsif mod.comment %>
-          <a href="<%= mod.comment.url %>">Comment by
+          <a href="<%= mod.comment.url %>"><%= t :CommentBy %>
             <%= mod.comment.user.username %>
-            on
+            <%= t :CommentOn %>
             <%= mod.comment.story.title %></a>
         <% elsif mod.tag %>
           <%= link_to("Tag: #{mod.tag.tag}", mod.tag) %>
         <% elsif mod.user_id %>
           <% if mod.user %>
-            <a href="/u/<%= mod.user.username %>">User
+            <a href="/u/<%= mod.user.username %>"><%= t :User %>
               <%= mod.user.username %></a>
           <% else %>
-            User <%= mod.user_id %> (Deleted)
+            <%= t :User %> <%= mod.user_id %> (<%= t :DeletedUser %>)
           <% end %>
         <% end %></td>
     </tr>
     <tr class="row<%= bit %> <%= mod.reason.present?? "nobottom" : "" %>">
       <td colspan=2></td>
-      <td>Action: <em><%= mod.action %></em></td>
+      <td><%= t :ActionLabel %> <em><%= mod.action %></em></td>
     </tr>
     <% if mod.reason.present? %>
       <tr class="row<%= bit %>">
         <td colspan=2></td>
-        <td>Reason: <em><%= mod.reason %></em></td>
+        <td><%= t :ReasonLabel %> <em><%= mod.reason %></em></td>
       </tr>
     <% end %>
     <% bit = (bit == 1 ? 0 : 1) %>
