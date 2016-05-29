@@ -2,6 +2,162 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 de:
+  # app/controllers/application_controller.rb
+  AccessDenied: "Sie sind nicht berechtigt, auf diese Ressource zuzugreifen."
+  NotLoggedIn: "Nicht eingeloggt."
+  
+  # app/controllers/comments_controller.rb
+  CannotFindStory: "Artikel kann nicht gefunden werden."
+  InvalidParentComment: "ungültiger übergeordneter Kommentar"
+  AlreadyPostedACommentRecently: "^Sie haben schon vor kurzem einen Kommentar hier hinterlassen."
+  CannotFindComment: "Kommentar kann nicht gefunden werden."
+  InvalidReason: "ungültiger Grund"
+  NotPermittedToDownvote: "Benutzer darf nicht negativ bewerten."
+  RSSNewestComments: "RSS 2.0 - Neueste Kommentare"
+  NewestComments: "Neueste Kommentare"
+  PrivateCommentsFeedForUsername:  "Privater Kommentar-Feed für %{username}"
+  ThreadsForUsername: "Threads für %{username}"
+  YourThreads: "Deine Threads"
+  
+  # app/controllers/filters_controller.rb
+  TagFilters: "Tag-Filter"
+  FiltersUpdated: "Ihre Filter wurden aktualisiert."
+  
+  # app/controllers/hats_controller.rb
+  RequestAHat: "Einen Hat beantragen"
+  Hats: "Hats"
+  SuccessfullySubmittedHatRequest: "Hat wurde erfolgreich beantragt."
+  HatRequests: "Beantragte Hats"
+  SuccessfullyApprovedHatRequest: "Hat wurde erfolgreich bestätigt."
+  SuccessfullyRejectedHatRequest: "Hat wurde erfolgreich abgelehnt."
+
+  # app/controllers/home_controller.rb
+  AMystery: "Ein Mysterium"
+  KeepItOnsite: "Kein Chat vorhanden"
+  YouApparentlyHaveNoPrivacy: "Anscheinend haben Sie keinen Datenschutz"
+  HiddenStories: "versteckte Artikel"
+  Comments: "Kommentare"
+  PrivateFeedForUsername: "Privater Feed für %{username}"
+  NewestStories: "Neueste Artikel"
+  NewestStoriesByUsername: "Neueste Artikel von %{username}"
+  RecentStories: "Letzte Posts"
+  Tagged: "getagged"
+  TopStoriesOfThePastDays:
+    one: "Beste Posts seit gestern"
+    few: "Beste Posts der lezten %{count} Tage"
+    many: "Beste Posts der lezten %{count} Tage"
+    other: "Beste Posts der lezten %{count} Tage"
+  TopStoriesOfThePastWeeks:
+    one: "Beste Posts diese Woche"
+    few: "Beste Posts der lezten %{count} Wochen"
+    many: "Beste Posts der lezten %{count} Wochen"
+    other: "Beste Posts der lezten %{count} Wochen"
+  TopStoriesOfThePastMonths:
+    one: "Beste Posts diesen Monat"
+    few: "Beste Posts der lezten %{count} Monate"
+    many: "Beste Posts der lezten %{count} Monate"
+    other: "Beste Posts der lezten %{count} Monate"
+  TopStoriesOfThePastYears:
+    one: "Beste Posts dieses Jahr"
+    few: "Beste Posts der lezten %{count} Jahre"
+    many: "Beste Posts der lezten %{count} Jahre"
+    other: "Beste Posts der lezten %{count} Jahre"
+  YourUpvotedStories: "Ihre positiv bewerteten Stories"
+  
+  # app/controllers/invitations_controller.rb
+  PublicInvitationRequestsAreNotAllowed: "Das öffentliche Beantragen einer Einladung ist nicht erlaubt."
+  InvalidOrExpiredInvitationRequest: "Ungültige oder abgelaufene Einladungsanfrage."
+  InvitationRequestValidatedNowShownToOtherUsers: "Ihre Einladungsanfrage wurde abgeschickt und ist jetzt für andere eingeloggte Nutzer sichtbar."
+  SuccessfullyEmailedInvitationToEmailAddress: "Ihre Einladung wurde erfolgreich an %{emailaddress} verschickt."
+  CouldNotSendInvitationVerifyEmailAddress: "Die Einladung konnte nicht verschickt werden. Bitte E-Mail-Adresse überprüfen."
+  YouHaveBeenEmailedConfirmationToEmailAddress: "Ihre Bestätigung wurde an %{emailaddress} verschickt."
+  SuccessfullyEmailedInvitationToName: "Die Einladung wurde erfolgreich an %{name} verschickt."
+  SuccessfullyDeletedInvitationRequestFromName: "Die Einladung von %{name} wurde erfolgreich gelöscht."
+  
+  # app/controllers/login_controller.rb
+  Login: Login
+  NoUser: "kein Benutzer"
+  AuthenticationFailed: "Authentifizierung fehlgeschlagen"
+  UserIsBanned: "Benutzer ist verbannt"
+  AccountReactivatedCommentsUndeleted: "Ihr Account wurde reaktiviert und ihre gelöschten Kommentare wurden wiederhergestellt."
+  InvalidEmailOrPassword: "Ungültige E-Mail-Adresse und/oder Passwort."
+  ResetPassword: "Passwort zurücksetzen"
+  InvalidEmailOrUsername: "Ungültige E-Mail-Adresse und/oder Benutzername."
+  PasswordRestInstructionEmailed: "Eine Anleitung zum Zurücksetzen Ihres Passwortes wurde Ihnen per Mail verschickt."
+  CouldNotResetPassword: "Passwort konnte nicht zurückgesetzt werden."
+  InvalidResetToken: "Ungültiges Token. Dieses wurde eventuell schon benutzt oder es wurde falsch kopiert."
+  
+  # app/controllers/messages_controller.rb
+  Messages: "Nachrichten"
+  MessagesSent: "Verschickte Nachrichten"
+  YourMessageHasBeenSentTo: "Ihre Nachricht wurde an %{message_recipient} verschickt."
+  DeletedMessage: "Nachricht wurde gelöscht."
+  ReplyPrefix: "Aw:"
+  DeletedXMessages:
+    one: "1 Nachricht wurde gelöscht."
+    few: "%{count} Nachrichten wurden gelöscht."
+    many: "%{count} Nachrichten wurden gelöscht."
+    other: "%{count} Nachrichten wurden gelöscht."
+  CouldNotFindMessage: "Die Nachricht konnte nicht gefunden werden."
+  
+  # app/controllers/moderations_controller.rb
+  ModerationLog: "Moderations-Log"
+  
+  # app/controllers/search_controller.rb
+  Search: "Suche"
+  
+  # app/controllers/settings_controller.rb
+  AccountSettings: "Account-Einstellungen"
+  YourAccountHasBeenDeleted: "Ihr Account wurde erfolgreich gelöscht"
+  YourPasswordCouldNotBeVerified: "Ihr Passwort konnte nicht überprüft werden."
+  SiteNotConfiguredForPushover: "Diese Seite ist nicht für Pushover eingerichtet."
+  NoRandomTokenPresentInSession: "Kein zufälliges Token in der Session vorhanden."
+  NoRandomTokenPresentInUrl: "Kein zufälliges Token in der URL vorhanden."
+  AccountSetupForPushoverNotifications: "Ihr Account ist nun für Pushover-Benachrichtigungen eingerichtet."
+  AccountSetupNoLongerForPushoverNotifications: "Ihr Account ist nicht mehr für Pushover-Benachrichtigungen eingerichtet."
+  SuccessfullyUpdatedSettings: "Ihre Einstellungen wurden erfolgreich aktualisiert."
+  
+  # app/controllers/signup_controller.rb
+  YouAreAlreadySignedUp: "Sie sind bereits angemeldet."
+  Signup: "Anmeldung"
+  PassAlongAnInvitation: "Einladung weiterreichen"
+  InvalidOrExpiredInvitation: "Ungültige oder abgelaufene Einladung."
+  WelcomeToWebsitenameUsername: "Willkommen auf %{websitename}, %{username}"
+  
+  # app/controllers/stories_controller.rb
+  SubmitStory: "Artikel teilen"
+  YouCannotEditThatStory: "Sie dürfen diesen Artikel nicht berarbeiten." 
+  EditStory: "Artikel bearbeiten"
+  NoteURLCanonicalizedVersion: "Die URL wurde in ihrer kanonischen Version abgerufen."
+  URLAlreadySubmittedRecently: "Dieser Link wurde schon vor kurzem geteilt."
+  StorytitleMergeIntoThisStory: "\"%{storytitle}\" wurde in diesen Artikel zusammengeführt."
+  StoryRemoved: "[Artikel gelöscht]"
+  TwitterHandleLobsters: "@lobsters"
+  CommentCounts:
+    one: "1 Kommentar"
+    few: "%{count} Kommentare"
+    many: "%{count} Kommentare"
+    other: "%{count} Kommentare"
+  YourSuggestedChangesHaveBeenNoted: "Ihre gewünschten Änderungen wurden werücksichtigt."
+  CannotFindStory: "Artikel kann nicht gefunden werden."
+  InvalidReason: "ungültiger Grund"
+  NotPermittedToDownvote: "Benutzer darf nicht negativ bewerten."
+  CouldnotFindStoryOrNotAuthorizedToManageIt: "Artikel konnte nicht gefunden werden oder Sie sind nicht berechtigt, ihn zu bearbeiten"
+    
+  # app/controllers/tags_controller.rb
+  Tags: "Tags"
+  
+  # app/controllers/users_controller.rb
+  UserUsername: "Benutzer %{username}"
+  Users: "Benutzer"
+  UsersByKarma: "Benutzer sortiert nach Karma"
+  ModeratorsAndAdministrators: "Moderatoren und Administratoren"
+  PassAlongAnInvitation: "Einladung weiterreichen"
+  InvalidUser: "Ungültiger Benutzer"
+  MustGiveReasonForBan: "Sie müssen einen Grund für das Bannen nennen."
+  UserHasBeenBanned: "Benutzer wurde gebannt."
+  UserHasBeenUnbanned: "Der Bann wurde aufgehoben."
+  
   # app/helpers/application_helper.rb
   minutesAgo: 
     one: "vor 1 Minute"
@@ -73,7 +229,7 @@ de:
   # app/views/filters/index.html.erb
   FilteredTags: "Tags ausblenden"
   HideStories: "Um Threads auf der Homepage auszublenden, die mit einem bestimmten <a href=\"/tags\">Tag</a> gekennzeichnet wurden, haken Sie bitte die entspechende Checkbox unten an." 
-  HideStoriesNotLoggedIn:  "Since you are not logged in, your filters will be stored in a long-lasting browser cookie.  To permanently store your tag filters and have them work across browsers, <a href=\"/login\">login</a> to your account."
+  HideStoriesNotLoggedIn:  "Da Sie nicht eingeloggt sind, werden Ihre Filter lokal in einem Cookie gespeichert. Um Ihre Tag-Filter dauerhaft zu speichern und um auf sie in allen Browsern zugreifen zu könnnen, <a href=\"/login\">loggen Sie sich bitte ein</a>."
   Hide: Ausblenden
   Tag: Tag
   Description: Beschreibung
@@ -111,8 +267,7 @@ de:
   
   # app/views/home/rss.erb
   Page: Seite
-  TheNewestStories: "<em>The <a href=\"/newest\">newest</a> stories with a random sampling of
-    recently submitted stories that have not yet reached the front page.</em>"
+  TheNewestStories: "<em>Die <a href=\"/newest\">neuesten</a> Stories mit einer aleatorischen Mischung der zuletzt eingereichten Artikel, die es noch nicht bis zur Homepage geschafft haben.</em>"
     
   # app/views/invitation_mailer/invitation.text.erb
   
@@ -144,7 +299,11 @@ de:
   Login: Login
   LogoutConfirmation: "Sind sie sicher, dass Sie sich ausloggen möchten?"
   Messages: Deine Nachrichten
-  NewMessage: Neue Nachricht
+  NewMessage:
+    one: "1 neue Nachricht"
+    few: "%{count} neue Nachrichten"
+    many: "%{count} neue Nachrichten"
+    other: "%{count} neue Nachrichten"
   Filters: "Tag Filter"
   
   # app/views/login/forgot_password.html.erb
@@ -174,9 +333,16 @@ de:
   NoSentMessage: "Sie haben keine private Nachricht verschickt."
   ComposeMessage: "Nachricht verfassen"
   SendToLabel: "An:"
+  MessageSubject: "Betreff"
+  MessageFrom: "Von"
+  MessageTo: "An"
+  MessageReceived: "Empfangen"
+  MessageSent: "Verschickt"
   SubjectLabel: "Betreff:"
   MessageLabel: "Nachricht:"
   SendMessage: "Nachricht verschicken"
+  DeleteSelected: "Auswahl löschen"
+  
   
   # app/views/messages/show.html.erb
   BackToSentMessages: "zurück zu den verschicken Nachrichten"
@@ -185,9 +351,9 @@ de:
   administrator: Administrator
   moderator: Moderator
   DeleteMessage: "Nachricht löschen"
-  KeepAsNew: "Als neu kennzeichnen"
+  KeepAsNew: "Als neu markieren"
   ComposeReply: "Antwort verfassen"
-  IsReplyTo: "An"
+  IsReplyTo: "an"
   SendMessage: "Nachricht verschicken"
   MessageCannotBeRepliedTo: "Diese Nachricht kann nicht beantwortet werden. Bitte kontaktatieren Sie einen Moderator."
   
@@ -213,7 +379,7 @@ de:
   Include: Filtern nach
   OrderBy: Sortieren nach
   IncludeAll: Allem   
-  IncludeStories: Beiträgen   
+  IncludeStories: Artikeln   
   IncludeComments: Kommentaren
   OrderByRelevance: Relevanz   
   OrderByNewest: Veröffentlichungsdatum  
@@ -235,11 +401,11 @@ de:
   AboutLabel: "Über mich"
   SaveAccountSettings: "Account-Einstellungen speichern"
   NotificationSettings: Benachrichtigungseinstellungen
-  PushoverHint: "Für optionale Benachrichtigungseinsoptionen. Siehe unten."
+  PushoverHint: "Für optionale Benachrichtigungseinstellungen. Siehe unten."
   ManagePushoverSubscription: "Pushover-Abonnement verwalten"
   SubscribeWithPushover: "Pushover abonnieren"
   CommentReplyNotificationSettings: "Benachrichtigungseinstellungen - Antwort auf Kommentare"
-  CommentMentionNotificationSettings: "Benachrichtigungseinstellungen - In Kommentaren erwähnt"
+  CommentMentionNotificationSettings: "Benachrichtigungseinstellungen - in Kommentaren erwähnt"
   PrivateMessageNotificationSettings: "Benachrichtigungseinstellungen - private Nachricht"
   ReceiveEmailLabel: "E-Mail bekommen:"
   ReceivePushoverAlertLabel: "Pushover-Benachrichtigung bekommen:"

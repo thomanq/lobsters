@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @showing_user = User.where(:username => params[:username]).first!
-    @title = "User #{@showing_user.username}"
+    @title = t("UserUsername", :username => @showing_user.username)
 
     respond_to do |format|
       format.html { render :action => "show" }
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def tree
-    @title = "Users"
+    @title = t("Users")
 
     newest_user = User.last.id
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       @users = User.where("is_admin = ? OR is_moderator = ?", true, true)
         .order("id ASC").to_a
       @user_count = @users.length
-      @title = "Moderators and Administrators"
+      @title = t("ModeratorsAndAdministrators")
       render :action => "list"
     else
       content = Rails.cache.fetch("users_tree_#{newest_user}", :expires_in => (60 * 60 * 24)) {
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def invite
-    @title = "Pass Along an Invitation"
+    @title = t("PassAlongAnInvitation")
   end
 
   def disable_invitation
@@ -76,31 +76,31 @@ class UsersController < ApplicationController
   def ban
     buser = User.where(:username => params[:username]).first
     if !buser
-      flash[:error] = "Invalid user."
+      flash[:error] = t("InvalidUser")
       return redirect_to "/"
     end
 
     if !params[:reason].present?
-      flash[:error] = "You must give a reason for the ban."
+      flash[:error] = t("MustGiveReasonForBan")
       return redirect_to user_path(:user => buser.username)
     end
 
     buser.ban_by_user_for_reason!(@user, params[:reason])
 
-    flash[:success] = "User has been banned."
+    flash[:success] = t("UserHasBeenBanned")
     return redirect_to user_path(:user => buser.username)
   end
 
   def unban
     buser = User.where(:username => params[:username]).first
     if !buser
-      flash[:error] = "Invalid user."
+      flash[:error] = t("InvalidUser")
       return redirect_to "/"
     end
 
     buser.unban_by_user!(@user)
 
-    flash[:success] = "User has been unbanned."
+    flash[:success] = t("UserHasBeenUnbanned")
     return redirect_to user_path(:user => buser.username)
   end
 end

@@ -4,33 +4,33 @@ class SignupController < ApplicationController
 
   def index
     if @user
-      flash[:error] = "You are already signed up."
+      flash[:error] = t("YouAreAlreadySignedUp")
       return redirect_to "/"
     end
     if Rails.application.open_signups?
       redirect_to action: :invited, invitation_code: 'open' and return
     end
-    @title = "Signup"
+    @title = t("Signup")
   end
 
   def invite
-    @title = "Pass Along an Invitation"
+    @title = t("PassAlongAnInvitation")
   end
 
   def invited
     if @user
-      flash[:error] = "You are already signed up."
+      flash[:error] = t("YouAreAlreadySignedUp")
       return redirect_to "/"
     end
 
     if !Rails.application.open_signups?
       if !(@invitation = Invitation.where(:code => params[:invitation_code].to_s).first)
-        flash[:error] = "Invalid or expired invitation"
+        flash[:error] = t("InvalidOrExpiredInvitation")
         return redirect_to "/signup"
       end
     end
 
-    @title = "Signup"
+    @title = t("Signup")
 
     @new_user = User.new
 
@@ -44,7 +44,7 @@ class SignupController < ApplicationController
   def signup
     if !Rails.application.open_signups?
       if !(@invitation = Invitation.where(:code => params[:invitation_code].to_s).first)
-        flash[:error] = "Invalid or expired invitation."
+        flash[:error] = t("InvalidOrExpiredInvitation")
         return redirect_to "/signup"
       end
     end
@@ -62,8 +62,8 @@ class SignupController < ApplicationController
         @invitation.destroy
       end
       session[:u] = @new_user.session_token
-      flash[:success] = "Welcome to #{Rails.application.name}, " <<
-                        "#{@new_user.username}!"
+      flash[:success] = t("WelcomeToWebsitenameUsername", :websitename => Rails.application.name,
+                                                          :username => @new_user.username)
 
       return redirect_to "/signup/invite"
     else

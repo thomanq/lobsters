@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
   around_action :track_story_reads, only: [:show], if: -> { @user.present? }
 
   def create
-    @title = "Submit Story"
+    @title = t("SubmitStory")
     @cur_url = "/stories/new"
 
     @story = Story.new(story_params)
@@ -27,7 +27,7 @@ class StoriesController < ApplicationController
 
   def destroy
     if !@story.is_editable_by_user?(@user)
-      flash[:error] = "You cannot edit that story."
+      flash[:error] = t("YouCannotEditThatStory")
       return redirect_to "/"
     end
 
@@ -45,11 +45,11 @@ class StoriesController < ApplicationController
 
   def edit
     if !@story.is_editable_by_user?(@user)
-      flash[:error] = "You cannot edit that story."
+      flash[:error] = t("YouCannotEditThatStory")
       return redirect_to "/"
     end
 
-    @title = "Edit Story"
+    @title = t("EditStory")
 
     if @story.merged_into_story
       @story.merge_story_short_id = @story.merged_into_story.short_id
@@ -65,7 +65,7 @@ class StoriesController < ApplicationController
   end
 
   def new
-    @title = "Submit Story"
+    @title = t("SubmitStory")
     @cur_url = "/stories/new"
 
     @story = Story.new
@@ -77,8 +77,7 @@ class StoriesController < ApplicationController
       sattrs = @story.fetched_attributes
 
       if sattrs[:url].present? && @story.url != sattrs[:url]
-        flash.now[:notice] = "Note: URL has been changed to fetched " <<
-                             "canonicalized version"
+        flash.now[:notice] = t("NoteURLCanonicalizedVersion")
         @story.url = sattrs[:url]
       end
 
@@ -86,7 +85,7 @@ class StoriesController < ApplicationController
         if s.is_recent?
           # user won't be able to submit this story as new, so just redirect
           # them to the previous story
-          flash[:success] = "This URL has already been submitted recently."
+          flash[:success] = t("URLAlreadySubmittedRecently")
           return redirect_to s.comments_path
         else
           # user will see a warning like with preview screen
@@ -121,12 +120,12 @@ class StoriesController < ApplicationController
     # @story was already loaded by track_story_reads for logged-in users
     @story ||= Story.where(short_id: params[:id]).first!
     if @story.merged_into_story
-      flash[:success] = "\"#{@story.title}\" has been merged into this story."
+      flash[:success] = t("StorytitleMergeIntoThisStory", :storytitle => @story.title)
       return redirect_to @story.merged_into_story.comments_path
     end
 
     if !@story.can_be_seen_by_user?(@user)
-      raise ActionController::RoutingError.new("story gone")
+      raise ActionController::RoutingError.new(t("StoryRemoved"))
     end
 
     @title = @story.title
@@ -142,10 +141,9 @@ class StoriesController < ApplicationController
 
         @meta_tags = {
           "twitter:card" => "summary",
-          "twitter:site" => "@lobsters",
+          "twitter:site" => t("TwitterHandleLobsters"),
           "twitter:title" => @story.title,
-          "twitter:description" => @story.comments_count.to_s + " " +
-                                   'comment'.pluralize(@story.comments_count),
+          "twitter:description" => t("CommentCounts", :count => @story.comments_count),
           "twitter:image" => Rails.application.root_url +
                              "apple-touch-icon-144.png",
         }
@@ -202,7 +200,7 @@ class StoriesController < ApplicationController
 
       if dsug
         ostory = @story.reload
-        flash[:success] = "Your suggested changes have been noted."
+        flash[:success] = "YourSuggestedChangesHaveBeenNoted"
       end
       redirect_to ostory.comments_path
     else
@@ -213,7 +211,7 @@ class StoriesController < ApplicationController
   def undelete
     if !(@story.is_editable_by_user?(@user) &&
     @story.is_undeletable_by_user?(@user))
-      flash[:error] = "You cannot edit that story."
+      flash[:error] = t("YouCannotEditThatStory")
       return redirect_to "/"
     end
 
@@ -226,7 +224,7 @@ class StoriesController < ApplicationController
 
   def update
     if !@story.is_editable_by_user?(@user)
-      flash[:error] = "You cannot edit that story."
+      flash[:error] = t("YouCannotEditThatStory")
       return redirect_to "/"
     end
 
@@ -248,7 +246,7 @@ class StoriesController < ApplicationController
 
   def unvote
     if !(story = find_story)
-      return render :plain => "can't find story", :status => 400
+      return render :plain => t("CannotFindStory"), :status => 400
     end
 
     Vote.vote_thusly_on_story_or_comment_for_user_because(
@@ -260,7 +258,7 @@ class StoriesController < ApplicationController
 
   def upvote
     if !(story = find_story)
-      return render :plain => "can't find story", :status => 400
+      return render :plain => t("CannotFindStory"), :status => 400
     end
 
     Vote.vote_thusly_on_story_or_comment_for_user_because(
@@ -272,15 +270,15 @@ class StoriesController < ApplicationController
 
   def downvote
     if !(story = find_story)
-      return render :plain => "can't find story", :status => 400
+      return render :plain => t("CannotFindStory"), :status => 400
     end
 
     if !Vote::STORY_REASONS[params[:reason]]
-      return render :plain => "invalid reason", :status => 400
+      return render :plain => t("InvalidReason"), :status => 400
     end
 
     if !@user.can_downvote?(story)
-      return render :plain => "not permitted to downvote", :status => 400
+      return render :plain => t("NotPermittedToDownvote"), :status => 400
     end
 
     Vote.vote_thusly_on_story_or_comment_for_user_because(
@@ -292,7 +290,7 @@ class StoriesController < ApplicationController
 
   def hide
     if !(story = find_story)
-      return render :plain => "can't find story", :status => 400
+      return render :plain => t("CannotFindStory"), :status => 400
     end
 
     HiddenStory.hide_story_for_user(story.id, @user.id)
@@ -303,7 +301,7 @@ class StoriesController < ApplicationController
 
   def unhide
     if !(story = find_story)
-      return render :plain => "can't find story", :status => 400
+      return render :plain => t("CannotFindStory"), :status => 400
     end
 
     HiddenStory.where(:user_id => @user.id, :story_id => story.id).delete_all
@@ -380,8 +378,7 @@ private
     end
 
     if !@story
-      flash[:error] = "Could not find story or you are not authorized " <<
-                      "to manage it."
+      flash[:error] = t("CouldnotFindStoryOrNotAuthorizedToManageIt")
       redirect_to "/"
       return false
     end

@@ -3,13 +3,13 @@ class HatsController < ApplicationController
   before_action :require_logged_in_moderator, :except => [:build_request, :index, :create_request]
 
   def build_request
-    @title = "Request a Hat"
+    @title = t("RequestAHat")
 
     @hat_request = HatRequest.new
   end
 
   def index
-    @title = "Hats"
+    @title = t("Hats")
 
     @hat_groups = {}
 
@@ -27,7 +27,7 @@ class HatsController < ApplicationController
     @hat_request.comment = params[:hat_request][:comment]
 
     if @hat_request.save
-      flash[:success] = "Successfully submitted hat request."
+      flash[:success] = t("SuccessfullySubmittedHatRequest")
       return redirect_to "/hats"
     end
 
@@ -35,7 +35,7 @@ class HatsController < ApplicationController
   end
 
   def requests_index
-    @title = "Hat Requests"
+    @title = t("HatRequests")
 
     @hat_requests = HatRequest.all.includes(:user)
   end
@@ -46,7 +46,7 @@ class HatsController < ApplicationController
       .permit(:hat, :link))
     @hat_request.approve_by_user!(@user)
 
-    flash[:success] = "Successfully approved hat request."
+    flash[:success] = t("SuccessfullyApprovedHatRequest")
 
     return redirect_to "/hats/requests"
   end
@@ -55,7 +55,7 @@ class HatsController < ApplicationController
     @hat_request = HatRequest.find(params[:id])
     @hat_request.reject_by_user_for_reason!(@user, params[:hat_request][:rejection_comment])
 
-    flash[:success] = "Successfully rejected hat request."
+    flash[:success] = t("SuccessfullyRejectedHatRequest")
 
     return redirect_to "/hats/requests"
   end

@@ -28,9 +28,9 @@
       <tr>
         <th width="3%"><%= check_box_tag "delete_all",
           :id => "delete_all" %></th>
-        <th width="15%"><%= @direction == :in ? "From" : "To" %></th>
-        <th width="17%"><%= @direction == :in ? "Received" : "Sent" %></th>
-        <th width="60%">Subject</th>
+        <th width="15%"><%= @direction == :in ? t("MessageFrom") : t("MessageTo") %></th>
+        <th width="17%"><%= @direction == :in ? t("MessageReceived") : t("MessageSent") %></th>
+        <th width="60%"><%= t :MessageSubject %></th>
       </tr>
       <% @messages.includes(:author, :recipient).each do |message| %>
         <tr class="<%= message.has_been_read? ? "" : "bold" %>">
@@ -53,7 +53,7 @@
       <% end %>
       </table>
       <p>
-      <%= submit_tag "Delete Selected" %>
+      <%= submit_tag t("DeleteSelected") %>
       </p>
     <% end %>
   <% else %>

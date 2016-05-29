@@ -46,7 +46,7 @@ class MessagesController < ApplicationController
 
   def create
     @cur_url = "/messages"
-    @title = "Messages"
+    @title = t("Messages")
 
     @new_message = Message.new(message_params)
     @new_message.author_user_id = @user.id
@@ -55,8 +55,8 @@ class MessagesController < ApplicationController
     @messages = @user.undeleted_received_messages
 
     if @new_message.save
-      flash[:success] = "Your message has been sent to " <<
-                        @new_message.recipient.username.to_s << "."
+      flash[:success] = t("YourMessageHasBeenSentTo", 
+                          :message_recipient => @new_message.recipient.username.to_s)
       return redirect_to "/messages"
     else
       render :action => "index"
@@ -75,7 +75,7 @@ class MessagesController < ApplicationController
       if @message.subject.match(/^re:/i)
         @new_message.subject = @message.subject
       else
-        @new_message.subject = "Re: #{@message.subject}"
+        @new_message.subject = t("ReplyPrefix") + " #{@message.subject}"
       end
     end
 
@@ -96,7 +96,7 @@ class MessagesController < ApplicationController
 
     @message.save!
 
-    flash[:success] = "Deleted message."
+    flash[:success] = t("DeletedMessage")
 
     if @message.author_user_id == @user.id
       return redirect_to "/messages/sent"
@@ -129,7 +129,7 @@ class MessagesController < ApplicationController
       end
     end
 
-    flash[:success] = "Deleted #{deleted} #{'message'.pluralize(deleted)}"
+    flash[:success] = t("DeletedXMessages", :count => deleted)
 
     @user.update_unread_message_count!
 
@@ -158,7 +158,7 @@ private
       end
     end
 
-    flash[:error] = "Could not find message."
+    flash[:error] = t("CouldNotFindMessage")
     redirect_to "/messages"
     return false
   end

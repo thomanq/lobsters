@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   def create
     if !(story = Story.where(:short_id => params[:story_id]).first) ||
        story.is_gone?
-      return render :plain => "can't find story", :status => 400
+      return render :plain => t("CannotFindStory"), :status => 400
     end
 
     comment = story.comments.build
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
         .first)
         comment.parent_comment = pc
       else
-        return render :json => { :error => "invalid parent comment", :status => 400 }
+        return render :json => { :error => t("InvalidParentComment"), :status => 400 }
       end
     end
 
@@ -38,8 +38,7 @@ class CommentsController < ApplicationController
                            :user_id => @user.id,
                            :parent_comment_id => comment.parent_comment_id).first)
       if (Time.current - pc.created_at) < 5.minutes && !@user.is_moderator?
-        comment.errors.add(:comment, "^You have already posted a comment " <<
-          "here recently.")
+        comment.errors.add(:comment, t("AlreadyPostedACommentRecently"))
 
         return render :partial => "commentbox", :layout => false,
           :content_type => "text/html", :locals => { :comment => comment }
@@ -65,7 +64,7 @@ class CommentsController < ApplicationController
 
   def show
     if !((comment = find_comment) && comment.is_editable_by_user?(@user))
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     render :partial => "comment",
@@ -79,7 +78,7 @@ class CommentsController < ApplicationController
 
   def show_short_id
     if !(comment = find_comment)
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     render :json => comment.as_json
@@ -89,13 +88,13 @@ class CommentsController < ApplicationController
     if (comment = find_comment)
       return redirect_to comment.path
     else
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
   end
 
   def edit
     if !((comment = find_comment) && comment.is_editable_by_user?(@user))
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     render :partial => "commentbox", :layout => false,
@@ -104,7 +103,7 @@ class CommentsController < ApplicationController
 
   def reply
     if !(parent_comment = find_comment)
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     comment = Comment.new
@@ -117,7 +116,7 @@ class CommentsController < ApplicationController
 
   def delete
     if !((comment = find_comment) && comment.is_deletable_by_user?(@user))
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     comment.delete_for_user(@user, params[:reason])
@@ -128,7 +127,7 @@ class CommentsController < ApplicationController
 
   def undelete
     if !((comment = find_comment) && comment.is_undeletable_by_user?(@user))
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     comment.undelete_for_user(@user)
@@ -139,7 +138,7 @@ class CommentsController < ApplicationController
 
   def update
     if !((comment = find_comment) && comment.is_editable_by_user?(@user))
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     comment.comment = params[:comment]
@@ -165,7 +164,7 @@ class CommentsController < ApplicationController
 
   def unvote
     if !(comment = find_comment)
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     Vote.vote_thusly_on_story_or_comment_for_user_because(
@@ -177,7 +176,7 @@ class CommentsController < ApplicationController
 
   def upvote
     if !(comment = find_comment)
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     Vote.vote_thusly_on_story_or_comment_for_user_because(
@@ -189,15 +188,15 @@ class CommentsController < ApplicationController
 
   def downvote
     if !(comment = find_comment)
-      return render :plain => "can't find comment", :status => 400
+      return render :plain => t("CannotFindComment"), :status => 400
     end
 
     if !Vote::COMMENT_REASONS[params[:reason]]
-      return render :plain => "invalid reason", :status => 400
+      return render :plain => t("InvalidReason"), :status => 400
     end
 
     if !@user.can_downvote?(comment)
-      return render :plain => "not permitted to downvote", :status => 400
+      return render :plain => t("NotPermittedToDownvote"), :status => 400
     end
 
     Vote.vote_thusly_on_story_or_comment_for_user_because(
@@ -209,11 +208,11 @@ class CommentsController < ApplicationController
 
   def index
     @rss_link ||= {
-      :title => "RSS 2.0 - Newest Comments",
+      :title => t("RSSNewestComments"),
       :href => "/comments.rss" + (@user ? "?token=#{@user.rss_token}" : ""),
     }
 
-    @heading = @title = "Newest Comments"
+    @heading = @title = t("NewestComments")
     @cur_url = "/comments"
 
     @page = params[:page].to_i
@@ -253,7 +252,7 @@ class CommentsController < ApplicationController
       format.html { render :action => "index" }
       format.rss {
         if @user && params[:token].present?
-          @title = "Private comments feed for #{@user.username}"
+          @title = t("PrivateCommentsFeedForUsername", :username => @user.username)
         end
 
         render :action => "index.rss", :layout => false
@@ -264,14 +263,14 @@ class CommentsController < ApplicationController
   def threads
     if params[:user]
       @showing_user = User.where(:username => params[:user]).first!
-      @heading = @title = "Threads for #{@showing_user.username}"
+      @heading = @title = t("ThreadsForUsername", :username => @showing_user.username)
       @cur_url = "/threads/#{@showing_user.username}"
     elsif !@user
       # TODO: show all recent threads
       return redirect_to "/login"
     else
       @showing_user = @user
-      @heading = @title = "Your Threads"
+      @heading = @title = t("YourThreads")
       @cur_url = "/threads"
     end
 

@@ -2,7 +2,7 @@ class ModerationsController < ApplicationController
   ENTRIES_PER_PAGE = 50
 
   def index
-    @title = "Moderation Log"
+    @title = t("ModerationLog")
     @moderators = ['(All)', '(Users)'] + User.moderators.map(&:username)
 
     @moderator = params.fetch('moderator', '(All)')

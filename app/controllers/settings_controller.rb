@@ -4,7 +4,7 @@ class SettingsController < ApplicationController
   TOTP_SESSION_TIMEOUT = (60 * 15)
 
   def index
-    @title = "Account Settings"
+    @title = t("AccountSettings")
 
     @edit_user = @user.dup
   end
@@ -130,7 +130,7 @@ class SettingsController < ApplicationController
 
   def pushover_auth
     if !Pushover.SUBSCRIPTION_CODE
-      flash[:error] = "This site is not configured for Pushover"
+      flash[:error] = t("SiteNotConfiguredForPushover")
       return redirect_to "/settings"
     end
 
@@ -145,12 +145,12 @@ class SettingsController < ApplicationController
 
   def pushover_callback
     if !session[:pushover_rand].to_s.present?
-      flash[:error] = "No random token present in session"
+      flash[:error] = t("NoRandomTokenPresentInSession")
       return redirect_to "/settings"
     end
 
     if !params[:rand].to_s.present?
-      flash[:error] = "No random token present in URL"
+      flash[:error] = t("NoRandomTokenPresentInUrl")
       return redirect_to "/settings"
     end
 
@@ -162,9 +162,9 @@ class SettingsController < ApplicationController
     @user.save!
 
     if @user.pushover_user_key.present?
-      flash[:success] = "Your account is now setup for Pushover notifications."
+      flash[:success] = t("AccountSetupForPushoverNotifications")
     else
-      flash[:success] = "Your account is no longer setup for Pushover notifications."
+      flash[:success] = t("AccountSetupNoLongerForPushoverNotifications")
     end
 
     return redirect_to "/settings"

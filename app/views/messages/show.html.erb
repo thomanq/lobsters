@@ -23,7 +23,7 @@
       <% else %>
         <%= @message.author_username %>
       <% end %>
-      to
+      <%= t :IsReplyTo %>
       <a href="/u/<%= @message.recipient.username %>"><%=
         @message.recipient.username %></a>
       <%= time_ago_in_words_label(@message.created_at) %>

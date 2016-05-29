@@ -120,7 +120,7 @@ class ApplicationController < ActionController::Base
       if @user.is_moderator?
         true
       else
-        flash[:error] = "You are not authorized to access that resource."
+        flash[:error] = t("AccessDenied")
         return redirect_to "/"
       end
     end
@@ -143,7 +143,7 @@ class ApplicationController < ActionController::Base
     if @user
       true
     else
-      render :plain => "not logged in", :status => 400
+      render :plain => t("NotLoggedIn"), :status => 400
       return false
     end
   end

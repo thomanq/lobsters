@@ -3,7 +3,7 @@ class TagsController < ApplicationController
 
   def index
     @cur_url = "/tags"
-    @title = "Tags"
+    @title = t("Tags")
 
     @tags = Tag.all_with_story_counts_for(nil)
 

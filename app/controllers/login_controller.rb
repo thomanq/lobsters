@@ -16,7 +16,7 @@ class LoginController < ApplicationController
   end
 
   def index
-    @title = "Login"
+    @title = t("Login")
     @referer ||= request.referer
     render :action => "index"
   end
@@ -90,7 +90,7 @@ class LoginController < ApplicationController
   end
 
   def forgot_password
-    @title = "Reset Password"
+    @title = t("ResetPassword")
     render :action => "forgot_password"
   end
 
@@ -98,18 +98,18 @@ class LoginController < ApplicationController
     @found_user = User.where("email = ? OR username = ?", params[:email], params[:email]).first
 
     if !@found_user
-      flash.now[:error] = "Invalid e-mail address or username."
+      flash.now[:error] = t("InvalidEmailOrUsername")
       return forgot_password
     end
 
     @found_user.initiate_password_reset_for_ip(request.remote_ip)
 
-    flash.now[:success] = "Password reset instructions have been e-mailed to you."
+    flash.now[:success] = t("PasswordRestInstructionEmailed")
     return index
   end
 
   def set_new_password
-    @title = "Reset Password"
+    @title = t("ResetPassword")
 
     if (m = params[:token].to_s.match(/^(\d+)-/)) &&
        (Time.current - Time.zone.at(m[1].to_i)) < 24.hours
@@ -138,12 +138,11 @@ class LoginController < ApplicationController
             return redirect_to "/"
           end
         else
-          flash[:error] = "Could not reset password."
+          flash[:error] = t("CouldNotResetPassword")
         end
       end
     else
-      flash[:error] = "Invalid reset token.  It may have already been " <<
-                      "used or you may have copied it incorrectly."
+      flash[:error] = t("InvalidResetToken")
       return redirect_to forgot_password_path
     end
   end
