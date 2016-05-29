@@ -32,6 +32,9 @@ de:
   SuccessfullyRejectedHatRequest: "Hat wurde erfolgreich abgelehnt."
 
   # app/controllers/home_controller.rb
+  AboutTitle: "Über"
+  Chat: "Chat"
+  Privacy: "Datenschutz"
   AMystery: "Ein Mysterium"
   KeepItOnsite: "Kein Chat vorhanden"
   YouApparentlyHaveNoPrivacy: "Anscheinend haben Sie keinen Datenschutz"
@@ -133,6 +136,7 @@ de:
   StorytitleMergeIntoThisStory: "\"%{storytitle}\" wurde in diesen Artikel zusammengeführt."
   StoryRemoved: "[Artikel gelöscht]"
   TwitterHandleLobsters: "@lobsters"
+  NotAllowedToOfferSuggestionsOnStory: "Sie sind nicht berechtigt, Vorschläge über diesen Artikel zu machen." 
   CommentCounts:
     one: "1 Kommentar"
     few: "%{count} Kommentare"

@@ -18,7 +18,7 @@ class HomeController < ApplicationController
 
   def about
     begin
-      @title = "About"
+      @title = t("AboutTitle")
       render :action => "about"
     rescue ActionView::MissingTemplate
       render :html => ("<div class=\"box wide\">" <<
@@ -29,7 +29,7 @@ class HomeController < ApplicationController
 
   def chat
     begin
-      @title = "Chat"
+      @title = t("Chat")
       render :action => "chat"
     rescue ActionView::MissingTemplate
       render :html => ("<div class=\"box wide\">" <<
@@ -41,7 +41,7 @@ class HomeController < ApplicationController
 
   def privacy
     begin
-      @title = "Privacy"
+      @title = t("Privacy")
       render :action => "privacy"
     rescue ActionView::MissingTemplate
       render :html => ("<div class=\"box wide\">" <<
