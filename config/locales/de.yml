@@ -190,7 +190,7 @@ de:
     other: "vor %{count} Jahren"
 
   # app/views/ban_notification/notify.text.erb
-  
+  BanNotification: "Sie wurden von %{application_name} vom Benutzer %{banner_username} aus folgendem Grund gebannt:<br><br>%{reason}<br><br>Sie sind nicht mehr berechtigt, sich auf der Seite einzuloggen. Wenn Sie den Bann mit dem Moderator besprechen wollen, beantworten Sie diese E-Mail."
   
   # app/views/comments/_comment.html.erb
   link: Link
@@ -210,25 +210,26 @@ de:
   Cancel: Abbrechen
   
   # app/views/comments/_postedreply.html.erb
-  
+  # => nothing to translate 
   
   # app/views/comments/index.html.erb
-  
+  Page: Seite 
   
   # app/views/comments/index.rss.erb
-  
+  onComment: "über"
   
   # app/views/comments/threads.html.erb
-  
+  # => nothing to translate
   
   # app/views/email_message/notify.text.erb
   ReplyAtLabel: "Antworten unter:"
   
   # app/views/email_reply/mention.text.erb
-  
+  UsernameHasMentionedYouInAComment: "%{username} hat Sie in einem Kommentar erwähnt:"
+  ContinueThisDiscussionAtUrl: "Setzen Sie die Diskussion fort unter: %{url}."
   
   # app/views/email_reply/reply.text.erb
-  
+  UsernameHasRepliedToYou: "%{username} hat geantwortet:"
   
   # app/views/filters/index.html.erb
   FilteredTags: "Tags ausblenden"
@@ -257,27 +258,95 @@ de:
   preTextHint: "mindestens<tt>&nbsp;&nbsp;&nbsp;&nbsp;4 Leerzeichen</tt> voranstellen"
   inlineImage: "Bild auf derselben Zeile"
   inlineImageHint: "<tt>![alt-Text](http://example.com/image.jpg)</tt> (nur im Artikeltext erlaubt)"
-  # app/views/hats/build_request.html.erb
   
+  # app/views/hats/build_request.html.erb
+  RequestAHat: "Einen Hut beantragen"
+  HatExplainer:"<p>
+    Hüte stellen eine formale, offizielle Art und Weise dar, einen Kommentar 
+    im Namen eines Pojekts, einer Organisation oder einer Firma abzugeben. Jeder Benutzer
+    kann mehrere Hüte haben und darf nur einen Hut gleichzeitig tragen, wenn er 
+    Kommentare abgibt oder private Nachrichten verschickt.
+    </p>
+    <p>
+    Hüte sind für Kernentwickler eines Projektes und Firmenmitarbeiter vorgesehen,
+    die berechtigt sind, Kommentare im Namen des Projektes oder ihres Arbeitgebers abzugeben.
+    Hüte sind vorrangig für größere Projekte und Firmen gedacht. Hüte dienen nicht dazu,
+    alle Beiträge einer Person zu einem beliebigen Software-Projekt aufzulisten.
+    </p>
+    <p>
+    Hüte werden nicht an gelegentliche Projektbeiträger, an Entwickler von 
+    kleineren Projekten und an ehemalige Mitarbeiter vergeben. Ebenso, falls nicht 
+    überprüft werden kann, dass die Person berechtigt ist, den Standpunkt einer Organisation zu vertreten.
+    In der Regel wird kein Hut ohne offizielle E-Mail-Adresse der Firma oder ohne
+    Commit-Rechte beim Projekt genehmigt.
+    </p>
+    <p>
+    Um einen Hut für ihren Account anzufordern, geben Sie eine kurze Beschreibung zum Hut an
+    (z.B. \"OpenBSD Entwickler\"), einen öffentlichen Link, der beim Hovern über dem Hut
+    angezeigt werden soll - wie Ihre berufliche bzw. projektbezogene E-Mail-Adresse oder einen 
+    Link zur Webseite des Projekts/Unternehmens - sowie private Anmerkungen, die Moderatoren
+    beim Überprüfen Ihrer Nachfrage weiterhelfen sollen.
+    </p>
+    <p>
+    Sobald Sie einen Hut angefragt haben, wird ein Moderator Ihre Anfrage überprüfen und
+    die angegebene E-Mail-Adresse anschreiben bzw. händisch die angegebenen Daten verifizieren.
+    </p>"
+  HatLabel: "Hut:"
+  HatPlaceholder: "XYZ Projektmitglied"
+  LinkLabel: "Link:"
+  LinkPlaceholder: "benutzer@projekt.org oder URL zur Arbeitgeberseite"
+  CommentLabel: "Kommentar:"
+  CommentPlaceholder: "Wird nur Moderatoren beim Bestätigungsprozess angezeigt"
+  RequestHat: "Hut beantragen"
   
   # app/views/hats/index.html.erb
-  
+  Hats: "Hüte"
+  HatSummary: "Hüte stellen eine formale, offizielle Art und Weise dar, einen Kommentar 
+    im Namen eines Pojekts, einer Organisation oder einer Firma abzugeben. Jeder Benutzer
+    kann mehrere Hüte haben und darf nur einen Hut gleichzeitig tragen, wenn er 
+    Kommentare abgibt oder private Nachrichten verschickt."
+  User: Benutzer
+  Hat: Hut
+  Link: Link
+  NoneHat: keiner
   
   # app/views/hats/requests_index.html.erb
-  
+  RequestedHats: Hutanfragen
+  NoHatRequests: "Keine Hutanfrage."
+  UserLabel: "Benutzer:"
+  HatLabel: "Hut:"
+  LinkLabel: "Link:"
+  CommentLabel: "Kommentar:"
+  ApproveHatRequest: "Hutanfrage bestätigen"
+  ReasonLabel: "Grund:"
+  RejectHatRequest: "Hutanfrage ablehnen"
   
   # app/views/home/index.html.erb
-  
-  
-  # app/views/home/rss.erb
-  Page: Seite
   TheNewestStories: "<em>Die <a href=\"/newest\">neuesten</a> Stories mit einer aleatorischen Mischung der zuletzt eingereichten Artikel, die es noch nicht bis zur Homepage geschafft haben.</em>"
+  Page: Seite
     
+  # app/views/home/rss.erb
+  # => nothing zu translate
+      
   # app/views/invitation_mailer/invitation.text.erb
-  
+  InvitationEmailBody: "Guten Tag %{invitation_email},
+
+Der Benutzer %{username} hat sie auf %{application_name} eingeladen (%{application_url}). %{memo}
+
+Um diese Einladung anzunehmen und einen Account zu erstellen, besuchen Sie folgenden Link:"
   
   # app/views/invitation_request_mailer/invitation_request.text.erb
+  InvitationRequestBody: "Hallo, %{invitation_request_email},
+
+Jemand mit der IP-Adresse %{ip_address} hat eine Einladung zu %{application_name} angefordert.
+
+  Name: %{invitation_request_name}
+  E-Mail: %{invitation_request_email}
+  Memo: %{invitation_request_memo}
   
+Wenn Sie es gewesen sind, besuchen Sie bitte den Link unten, um Ihre Anfrage zu bestätigen 
+und um sie anderen eingeloggten Benutzern anzuzeigen."
+  IfNotYouDeleteMessage: "Wenn Sie es nicht gewesen sind, können Sie einfach diese Nachricht ignorieren und löschen."
   
   # app/views/invitations/build.html.erb
   RequestAnInvitation: "Eine Einladung anfordern"
@@ -288,7 +357,14 @@ de:
   RequestInvitation: "Einladung anfordern"
   
   # app/views/invitations/index.html.erb
-  
+  RequestedInvitations: "Angeforderte Einladungen"
+  RequestedInvitationsSummary: "Diese Personen haben eine Einladung angefordert und haben ihr E-Mail-Adresse bestätigt.
+    Wenn Sie jemanden erkennen, können sie ihm/ihr gerne eine Einladung zuschicken und seine/ihre Anfrage löschen. Spam wird vom Moderator entfernt."
+  SendInvitation: "Einladung schicken"
+  InvitationConfirmationText: "Sind Sie sicher, dass Sie diese Person einladen und ihre Anfrage löschen wollen?"
+  DeleteInvitationRequest: "Löschen"
+  DeleteConfirmationText: "Sind Sie sicher, dass Sie diese Anfrage löschen wollen?"
+  NoInvitationtequests: "keine Einladungsanfrage"
   
   # app/views/layouts/application.html.erb
   Home: Home
@@ -321,7 +397,7 @@ de:
   ResetPassword: "Passwort zurücksetzen"
   NotYetAUser: "Noch keinen Account? Die Registrierung erfolgt nur über Einladungen, um Spam zu verhindern und um die Verantwortlichkeit zu fördern.  Wenn Sie jemanden kennen, der bereits einen <a href=\"/u/\">Benutzer-Account</a> besitzt, bitten Sie ihn/sie um eine Einladung oder "
   NotYetAUserInvitationRequest: "<a href=\"/invitations/request\">fordern Sie eine öffentlich an</a>."
-  NotYetAUserChatInvitation: "fördern Sie eine im <a href=\"/chat\">Chat</a> an."
+  NotYetAUserChatInvitation: "fordern Sie eine im <a href=\"/chat\">Chat</a> an."
   
   # app/views/login/set_new_password.html.erb
   SetNewPassword: "Neues Passwort setzen"
@@ -331,8 +407,8 @@ de:
   # app/views/messages/index.html.erb
   ViewReceived: zur Inbox
   ViewSent: zu den verschickten Nachrichten
-  PrivateMessages: Private Nachrichten
-  Sent: ""
+  SentPrivateMessages: "Verschickte private Nachrichten"
+  ReceivedPrivateMessages: "Empfangene private Nachrichten"
   NoReceivedMessage: "Sie haben keine private Nachricht erhalten."
   NoSentMessage: "Sie haben keine private Nachricht verschickt."
   ComposeMessage: "Nachricht verfassen"
@@ -346,7 +422,6 @@ de:
   MessageLabel: "Nachricht:"
   SendMessage: "Nachricht verschicken"
   DeleteSelected: "Auswahl löschen"
-  
   
   # app/views/messages/show.html.erb
   BackToSentMessages: "zurück zu den verschicken Nachrichten"
@@ -374,9 +449,10 @@ de:
   ActionLabel: "Handlung:"
   ReasonLabel: "Grund:"
   
-  
   # app/views/password_reset/password_reset_link.text.erb
-  
+  PasswordResetMailBody: "Hallo %{user_email},
+
+Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account-Passwortes auf %{application_name} geschickt. Wenn Sie es waren, besuchen Sie den Link unten, um Ihr Passwort zurückzusetzen. Wenn nicht, dann können Sie diese E-Mail ignorieren."
   
   # app/views/search/index.html.erb
   Search: Suche
@@ -417,19 +493,14 @@ de:
   ShowInYourThreadsLabel: "Unter <a href=\"/threads\">Deinen Threads</a> anzeigen"
   SubmittedStoryCommentSettings: "Kommentar-Einstellungen bei geposteten Threads"
   MailingListSettings: "Mailing-Liste-Einstellungen"
-  MailingListSettingsText: "When enabled, you will receive all newly submitted stories and comments to
-    your e-mail address entered above, except the stories and comments filtered
-    by your <a href=\"/filters\">Tag Filters</a>.
-    All e-mail messages will appear to be sent to your private list address
-    shown below which you can filter on, and e-mails you send to that address
-    will be posted under your account on this website.  You should keep your
-    unique list address private to prevent others from posting comments as you.When enabled, you will receive all newly submitted stories and comments to
-    your e-mail address entered above, except the stories and comments filtered
-    by your <a href=\"/filters\">tag filters</a>.
-    All e-mail messages will appear to be sent to your private list address
-    shown below which you can filter on, and e-mails you send to that address
-    will be posted under your account on this website.  You should keep your
-    unique list address private to prevent others from posting comments as you."
+  MailingListSettingsText: "Wenn die Option aktiviert wird, bekommen Sie alle Artikel
+  und geposteten Kommentare per E-Mail zugesandt, bis auf die Artikel und Kommentare, die mit Tags aus Ihrem
+  <a href=\"/filters\">Tag-Filter</a> markiert sind.
+  Alle E-Mails werden so aussehen, als wären sie an Ihre private List-Adresse 
+  (siehe unten) verschickt worden und können somit gefiltert werden. E-Mails, die 
+  Sie an diese Adresse schicken, werden unter Ihrem Account auf dieser Seite gepostet.
+  Sie sollten Ihre private List-Adresse geheim halten, um zu verhindern, dass Andere
+  Kommentare in Ihrem Namen abgeben."
   ReceiveListEMailsLabel: "Mailing-Liste abonnieren:"
   NoEmails: "keine E-Mails"
   AllStoriesAndComments: "alle Artikel und Kommentare"
@@ -448,15 +519,34 @@ de:
   VerifyPasswordLabel: "Passwort überprüfen"
   DeleteMyAccount: "Account unwiderruflich löschen"
   
-  
   # app/views/signup/index.html.erb
-  
+  CreateAnAccount: "Account erstellen"
+  SignupSummary: "Das Registrieren erfolgt derzeit nur auf Einladung, um Spam zu bekämpfen und um die Verantwortlichkeit zu fördern. Wenn Sie jemanden kennen, der bereits einen <a href=\"/u/\">Benutzer-Account</a> besitzt, bitten Sie ihn/sie um eine Einladung oder "
+  RequestOnePublicly: "<a href=\"/invitations/request\">fordern Sie eine öffentlich an</a>."
+  RequestOneInChat: "fordern Sie eine im <a href=\"/chat\">Chat</a> an."
   
   # app/views/signup/invite.html.erb
-  
+  PassAlongAnInvitation: "Einladung weiterreichen"
+  PassAlongAnInvitationSummary: "Diese Community kann nur wachsen, wenn Mitglieder neue Benutzer einladen, genau wie 
+  <strong>%{username}</strong> Sie eingeladen hat.
+  Nehmen Sie sich einen Moment Zeit und laden Sie jemanden an, den Sie kennen."
+  or: "oder"
+  SkipPassAlongAnInvitation: "Überspringen"
   
   # app/views/signup/invited.html.erb
-  
+  CreateAnAccountExplainer: "Um einen Account zu erstellen, geben Sie bitte Ihre E-Mail-Adresse und ein Passwort ein.
+      Ihre E-Mail-Adresse wird nie anderen Benutzern angezeigt und wird erst verwendet, 
+      wenn Sie Ihr Passwort zurücksetzen möchten oder wenn Sie sich für optionale 
+      Benachrichtigungen entscheiden. Ihr Benutzername kann später geändert werden."
+  InvitedByLabel: "Eingeladen von:"
+  UsernameLabel: "Benutzername:"
+  EMailAddressLabel: "E-Mail-Adresse:"
+  PasswordLabel: "Passwort:"
+  PasswordAgainLabel: "Passwort (erneut):"
+  TellAboutYourselfSummary: "Möchten Sie etwas über sich selbst erzählen. Es ist optional, wird in ihrem öffentlichen Profil angezeigt und kann jederzeit geändert werden."
+  AboutLabel: "Über mich:"
+  MarkdownFormattingAvailable: "Verfügbare Markdown-Formatierung"
+  SignupButton: "Registrieren"
   
   # app/views/stories/_form.html.erb
   FetchTitle: "Titel ermitteln"
@@ -470,33 +560,33 @@ de:
   GuidelinesButton: "Richlinien zum Teilen von Inhalten"
   GuidelinesText: >
           <li><p>
-          To be able to easily submit a page you're viewing in your browser
-          to %s, drag the bookmarklet to the right
-          to your bookmark bar.  You'll be taken to this page with the viewed
-          page's URL and title.
+          Um mühelos eine in Ihrem Browser offene Seite auf %s zu teilen, 
+          fügen Sie das Bookmarklet rechts Ihrer Lesezeichenleiste hinzu.
+          Beim Klicken auf das Bookmarklet werden Sie auf diese Seite mit
+          vorausgefülltem Link und Titel weitergeleitet.
           </p></li>
           <li><p>
-          When submitting a URL, the text field is optional and should only
-          be used when additional context or explanation of the URL is
-          needed.  Commentary or opinion should be reserved for a comment,
-          so that it can be voted on separately from the story.
+          Beim Teilen einer URL ist das Textfeld optional und sollte nur 
+          benutzt werden, wenn zusätzlicher Kontext oder Erklärungen zum Link
+          nötig sind. Kommentare oder Meinungen sollten für einen Kommentar
+          behalten werden, sodass Artikel und Kommentar getrennt von einander
+          bewertet werden können.
           </p></li>
           <li><p>
-          Do not editorialize story titles, but when the original story's
-          title has no context or is unclear, please change it.  <strong>Please
-          remove extraneous components from titles such as the name of the
-          site or section.</strong>
+          Passen Sie Artikeltitel nicht an, es sei denn dem originalen Titel
+          fehlt es an Kontext oder an Klarheit.
+          <strong>Entfernen Sie bitte vom Titel irrelevante Informationen wie
+          der Name der Webseite oder der Rubrik.</strong>
           </p></li>
           <li><p>
-          If no tags clearly apply to the story you are submitting, chances
-          are it does not belong here.  Do not overreach with tags if they
-          are not the primary focus of the story.
+          Wenn kein Tag zum Inhalt des geteilten Links passt, sind die Chancen 
+          hoch, dass er auf diese Webseite nicht gehört. Benutzen sie keine extra 
+          Tags, wenn sie nicht im Fokus des Artikels stehen.
           </p></li>
           <li><p>
-          When the story being submitted is more than a year or so old,
-          please add the year the story was written to the post title in
-          parentheses.
-          </p></li>"
+          Wenn der Artikel älter als ca ein Jahr ist, fügen Sie bitte das
+          Veröffentlichungsjahr zum Titel in Klammern hinzu.
+          </p></li>
 
   Author: Autor
   Iam: "Ich bin"
@@ -524,29 +614,41 @@ de:
   UndeleteConfirmation: "Sind Sie sicher, dass Sie diesen Thread nicht mehr löschen wollen?"
   
   # app/views/stories/edit.html.erb
-  
-  
+  EditStory: "Artikel bearbeiten"
+  MergeIntoLabel: "Fusionieren mit:"
+  MergeIntoPlaceholder: "Kurze Id vom Artikel, mit dem dieses Post fusioniert werden soll"
+  UnavailableLabel: "Nicht verfügbar:"
+  UnavailableNote: "Ursprügliche URL ist nicht verfügbar, Anzeigen von gecachtem Text aktivieren
+  ModReasonLabel: "Grund zur Moderation:"
+  MarkdownFormattingAvailable: "Verfügbare Markdown-Formatierung"
+  SaveButton: "Speichern"
+  OrCancelEditing: "oder <a href=\"%{cancel_link}\">Bearbeitung abbrechen</a>"
+
   # app/views/stories/new.html.erb
   SubmitStory: "Artikel posten"
   Submit: Posten
   
   # app/views/stories/show.html.erb
-  
+  SourceUrlUnvailableCachedTextAvailable: "Ursprüngliche URL nicht verfügbar seit %{timeago}, gecachter Text
+    ist verfügbar"
+  StoryContentCopyright: "All story content copyright of its respective owner.
   
   # app/views/stories/suggest.html.erb
-  
+  SuggestStoryChanges: "Änderungen vorschlagen"
+  SuggestChanges: "Änderungen vorschlagen"
+  orCancel: "oder <a href=\"%{story_id}\">abbrechen</a>"
   
   # app/views/tags/index.html.erb
-  
+  Tags: "Tags"
   
   # app/views/users/_invitationform.html.erb
   InvitationFormText: "Einladungen sind unbegrenzt, aber Personen, die Sie einladen, werden mit Ihrem Account in dem <a href=\"/u\">Benutzer-Baum</a> verbunden und Sie können die Verantwortung dafür tragen müssen, falls diese Probleme machen. Berücksichtigen Sie dies bitte mit, sollten Sie jemanden einladen, den Sie nicht persönlich kennen."
   MemoToUserLabel: "Nachricht an den Benutzer:"
-  SendInvitation: "Einladung verschicken"
-  
+  SendInvitation: "Einladung verschicken
   
   # app/views/users/list.html.erb
-  
+  administrator: "Administrator"
+  moderator: "Moderator"
   
   # app/views/users/show.html.erb
   StatusLabel: "Status:"
@@ -581,12 +683,13 @@ de:
   RecentVotesLabel: "Recent votes:"
   AdministrativeActions: "Administrative Tätigkeiten"
   UnbanUser: "Unban User"
-  BanUserText: "Banning a user will send an e-mail to the user with the reason below,
-        with your e-mail address as the Reply-To so the user can respond."
+  BanUserText: "Wenn Sie einen Benutzer bannen, bekommt dieser eine Benachrichtigung per E-Mail mit 
+  der von Ihnen angegebenen Begründung sowie Ihre E-Mail-Adresse als Reply-To-Adresse, sodass dieser
+  antworten kann."
   ReasonLabel: "Grund:"
   BanUser: "Benutzer bannen"
   
-  
   # app/views/users/tree.html.erb
+  NewestUsersLabel: "Neueste Benutzer:"
   
   

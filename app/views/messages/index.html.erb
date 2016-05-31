@@ -16,9 +16,10 @@
     <% end %>
   </div>
   <div class="legend">
-    <%= t :PrivateMessages %>
     <% if @direction == :out %>
-      <%= t :Sent %>
+      <%= t :SentPrivateMessages %>
+    <% else %>
+      <%= t :ReceivedPrivateMessages %>
     <% end %>
   </div>
 

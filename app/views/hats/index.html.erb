@@ -5,21 +5,18 @@
     </div>
   <% end %>
   <div class="legend">
-    Hats
+    <%= t :Hats %>
   </div>
 
   <p>
-  A hat is a formal, verified, way of posting a comment while speaking for a
-  project, organization, or company.  Each user may have multiple hats, one of
-  which may be selected to be worn when posting a comment or sending a private
-  message.
+    <%= t :HatSummary %>
   </p>
 
   <table class="data" width="100%" cellspacing=0>
   <tr>
-    <th style="width: 130px;">User</th>
-    <th>Hat</th>
-    <th>Link</th>
+    <th style="width: 130px;"><%= t :User %></th>
+    <th><%= t :Hat %></th>
+    <th><%= t :Link %></th>
   </tr>
   <% bit = 0 %>
   <% @hat_groups.keys.sort_by{|a| a.downcase }.each do |hg| %>
@@ -32,7 +29,7 @@
           <% if hh.link.to_s.match(/^http/) %>
             <a href="<%= hh.link %>" rel="nofollow"><%= hh.link %></a>
           <% elsif hh.link.blank? %>
-            <span class="na">None</span>
+            <span class="na"><%= t :NoneHat %></span>
           <% else %>
             <%= hh.link %>
           <% end %>

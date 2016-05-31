@@ -9,7 +9,7 @@
 
     <% @comments.each do |comment| %>
       <item>
-        <title>on <%= raw coder.encode(comment.story.title, :decimal) %></title>
+        <title><%= t :onComment %> <%= raw coder.encode(comment.story.title, :decimal) %></title>
         <link><%= comment.url %></link>
         <guid><%= comment.short_id_url %></guid>
         <author><%= comment.user.username %></author>
