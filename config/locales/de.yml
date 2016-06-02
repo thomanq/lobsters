@@ -261,7 +261,8 @@ de:
   
   # app/views/hats/build_request.html.erb
   RequestAHat: "Einen Hut beantragen"
-  HatExplainer:"<p>
+  HatExplainer: >
+    <p>
     Hüte stellen eine formale, offizielle Art und Weise dar, einen Kommentar 
     im Namen eines Pojekts, einer Organisation oder einer Firma abzugeben. Jeder Benutzer
     kann mehrere Hüte haben und darf nur einen Hut gleichzeitig tragen, wenn er 
@@ -290,7 +291,7 @@ de:
     <p>
     Sobald Sie einen Hut angefragt haben, wird ein Moderator Ihre Anfrage überprüfen und
     die angegebene E-Mail-Adresse anschreiben bzw. händisch die angegebenen Daten verifizieren.
-    </p>"
+    </p>
   HatLabel: "Hut:"
   HatPlaceholder: "XYZ Projektmitglied"
   LinkLabel: "Link:"
@@ -618,7 +619,7 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   MergeIntoLabel: "Fusionieren mit:"
   MergeIntoPlaceholder: "Kurze Id vom Artikel, mit dem dieses Post fusioniert werden soll"
   UnavailableLabel: "Nicht verfügbar:"
-  UnavailableNote: "Ursprügliche URL ist nicht verfügbar, Anzeigen von gecachtem Text aktivieren
+  UnavailableNote: "Ursprügliche URL ist nicht verfügbar, Anzeigen von gecachtem Text aktivieren"
   ModReasonLabel: "Grund zur Moderation:"
   MarkdownFormattingAvailable: "Verfügbare Markdown-Formatierung"
   SaveButton: "Speichern"
@@ -631,7 +632,7 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   # app/views/stories/show.html.erb
   SourceUrlUnvailableCachedTextAvailable: "Ursprüngliche URL nicht verfügbar seit %{timeago}, gecachter Text
     ist verfügbar"
-  StoryContentCopyright: "All story content copyright of its respective owner.
+  StoryContentCopyright: "All story content copyright of its respective owner."
   
   # app/views/stories/suggest.html.erb
   SuggestStoryChanges: "Änderungen vorschlagen"
@@ -644,7 +645,7 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   # app/views/users/_invitationform.html.erb
   InvitationFormText: "Einladungen sind unbegrenzt, aber Personen, die Sie einladen, werden mit Ihrem Account in dem <a href=\"/u\">Benutzer-Baum</a> verbunden und Sie können die Verantwortung dafür tragen müssen, falls diese Probleme machen. Berücksichtigen Sie dies bitte mit, sollten Sie jemanden einladen, den Sie nicht persönlich kennen."
   MemoToUserLabel: "Nachricht an den Benutzer:"
-  SendInvitation: "Einladung verschicken
+  SendInvitation: "Einladung verschicken"
   
   # app/views/users/list.html.erb
   administrator: "Administrator"
