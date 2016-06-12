@@ -188,6 +188,25 @@ de:
     few: "vor %{count} Jahren"
     many: "vor %{count} Jahren"
     other: "vor %{count} Jahren"
+  
+  # app/mailers/ban_notification.rb
+  YouHaveBeenBanned: "Sie wurden gebannt"
+
+  # app/mailers/email_message.rb
+  PrivateMessageFromUserSubject: "Private Nachricht von %{user}. Betreff: %{subject}"
+
+  # app/mailers/email_reply.rb
+  ReplyFromUserOnStoryTitle: "Antwort von %{user} auf %{story_title}"
+  MentionFromUserOnStoryTitle: "Erwähnt von %{user} auf %{story_title}"
+
+  # app/mailers/invitation_mailer.rb
+  YouHaveBeenInvitedToApplicationName: "Sie wurden auf %{application_name} eingeladen"
+
+  # app/mailers/invitation_request_mailer.rb
+  ConfirmYourInvitationRequestToApplicationName: "Bestätigen Sie Ihre Einladunsanfrage auf %{application_name}"
+
+  # app/mailers/password_reset.rb
+  ResetYourPassword: "Passwort zurücksetzen"
 
   # app/views/ban_notification/notify.text.erb
   BanNotification: "Sie wurden von %{application_name} vom Benutzer %{banner_username} aus folgendem Grund gebannt:<br><br>%{reason}<br><br>Sie sind nicht mehr berechtigt, sich auf der Seite einzuloggen. Wenn Sie den Bann mit dem Moderator besprechen wollen, beantworten Sie diese E-Mail."
@@ -530,7 +549,7 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   PassAlongAnInvitation: "Einladung weiterreichen"
   PassAlongAnInvitationSummary: "Diese Community kann nur wachsen, wenn Mitglieder neue Benutzer einladen, genau wie 
   <strong>%{username}</strong> Sie eingeladen hat.
-  Nehmen Sie sich einen Moment Zeit und laden Sie jemanden an, den Sie kennen."
+  Nehmen Sie sich einen Moment Zeit und laden Sie jemanden ein, den Sie kennen."
   or: "oder"
   SkipPassAlongAnInvitation: "Überspringen"
   

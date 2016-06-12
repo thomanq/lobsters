@@ -7,8 +7,8 @@ class EmailMessage < ActionMailer::Base
 
     mail(
       :to => user.email,
-      :subject => "[#{Rails.application.name}] Private Message from " <<
-                  "#{message.author_username}: #{message.subject}"
+      :subject => "[#{Rails.application.name}] " + t("PrivateMessageFromUserSubject", :user => message.author_username,
+                                                                                      :subject => message.subject)
     )
   end
 end

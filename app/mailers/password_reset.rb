@@ -7,7 +7,7 @@ class PasswordReset < ActionMailer::Base
 
     mail(
       :to => user.email,
-      :subject => "[#{Rails.application.name}] Reset your password"
+      :subject => "[#{Rails.application.name}] " + t("ResetYourPassword")
     )
   end
 end
