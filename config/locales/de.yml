@@ -17,7 +17,7 @@ de:
   NewestComments: "Neueste Kommentare"
   PrivateCommentsFeedForUsername:  "Privater Kommentar-Feed für %{username}"
   ThreadsForUsername: "Threads für %{username}"
-  YourThreads: "Deine Threads"
+  YourThreads: "Meine Threads"
   
   # app/controllers/filters_controller.rb
   TagFilters: "Tag-Filter"
@@ -188,7 +188,26 @@ de:
     few: "vor %{count} Jahren"
     many: "vor %{count} Jahren"
     other: "vor %{count} Jahren"
-  
+  Recent: Neu
+  Comments: Kommentare
+  YourThreads: "Meine Threads"
+  SubmitStory: "Artikel teilen"
+  Saved: "Lesezeichen"
+  Search: "Suche"
+  Reply:
+    one: "Antwort"
+    few: "Antworten"
+    many: "Antworten"
+    other: "Antworten"
+  Replies: "Antworten"
+  Message:
+    one: "Nachricht"
+    few: "Nachrichten"
+    many: "Nachrichten"
+    other: "Nachrichten"
+  Messages: "Nachrichten"
+  Login: "Login"
+
   # app/mailers/ban_notification.rb
   YouHaveBeenBanned: "Sie wurden gebannt"
 
@@ -207,6 +226,10 @@ de:
 
   # app/mailers/password_reset.rb
   ResetYourPassword: "Passwort zurücksetzen"
+
+  # app/models/comment.rb
+  CommentRemovedByModerator: "Kommentar entfernt von %{moderator_name}: %{reason}."
+  NoReasonGiven: "Keine Begründung angegeben"
 
   # app/views/ban_notification/notify.text.erb
   BanNotification: "Sie wurden von %{application_name} vom Benutzer %{banner_username} aus folgendem Grund gebannt:<br><br>%{reason}<br><br>Sie sind nicht mehr berechtigt, sich auf der Seite einzuloggen. Wenn Sie den Bann mit dem Moderator besprechen wollen, beantworten Sie diese E-Mail."
@@ -375,6 +398,7 @@ und um sie anderen eingeloggten Benutzern anzuzeigen."
   NameLabel: "Name:"
   UrlToVerifyYou: "URL, um Sie zu verifizieren (persönliche Webseite, Github-Account, usw.)"
   RequestInvitation: "Einladung anfordern"
+  NameNotUsernameLabel: "Vor- und Nachname:"
   
   # app/views/invitations/index.html.erb
   RequestedInvitations: "Angeforderte Einladungen"
@@ -388,34 +412,41 @@ und um sie anderen eingeloggten Benutzern anzuzeigen."
   
   # app/views/layouts/application.html.erb
   Home: Home
-  Recent: Neue Artikel
+  Recent: Neu
   Comments: Kommentare
   SubmitStory: Artikel hinzufügen
-  YourThreads: Deine Threads
+  YourThreads: Meine Threads
   About: Über
+  AboutAppName: "Über %{app_name}"
   ModerationLog: Moderation Log
   Chat: Chat
   Privacy: Datenschutz
   Login: Login
   LogoutConfirmation: "Sind sie sicher, dass Sie sich ausloggen möchten?"
-  Messages: Deine Nachrichten
+  Messages: Meine Nachrichten
   NewMessage:
     one: "1 neue Nachricht"
     few: "%{count} neue Nachrichten"
     many: "%{count} neue Nachrichten"
     other: "%{count} neue Nachrichten"
   Filters: "Tag Filter"
+  SignUpNow: "Account erstellen"
+  JoinAppName: "Bei %{app_name} registrieren"
+  InvitationQueueCount: "Einladung-Warteschlange (%{count})"
+  HatRequestsCount: "Hut-Anfragen (%{count})"
   
   # app/views/login/forgot_password.html.erb
   ResetPasswordText: "Wenn Sie Ihr Passwort vergessen haben, geben Sie Ihre E-Mail-Adresse oder Ihren Benutzernamen an und eine Anleitung wird Ihnen per E-Mail zugeschickt."
   
   # app/views/login/index.html.erb
+  SiteCurrentlyReadOnlyForMaintenance: Die Seite ist derzeit im schreibgeschützten Modus, denn es werden Wartungsarbeiten durchegführt.
   EmailOrUsernameLabel: "E-Mail oder Benutzername:"
   PasswordLabel: "Passwort:"
-  ForgotPassword: "Passwort vergessen oder Account gelöscht?"
+  ForgotPasswordOrAccountDeleted: "Passwort vergessen oder Account gelöscht?"
   Login: Login
   ResetPassword: "Passwort zurücksetzen"
-  NotYetAUser: "Noch keinen Account? Die Registrierung erfolgt nur über Einladungen, um Spam zu verhindern und um die Verantwortlichkeit zu fördern.  Wenn Sie jemanden kennen, der bereits einen <a href=\"/u/\">Benutzer-Account</a> besitzt, bitten Sie ihn/sie um eine Einladung oder "
+  NotAUserSignUp: Noch keinen Account? <a href="/invitations/open">Hier registrieren</a>.
+  NotYetAUserInvitation: "Noch keinen Account? Die Registrierung erfolgt nur über Einladungen, um Spam zu verhindern und um die Verantwortlichkeit zu fördern.  Wenn Sie jemanden kennen, der bereits einen <a href=\"/u/\">Benutzer-Account</a> besitzt, bitten Sie ihn/sie um eine Einladung oder "
   NotYetAUserInvitationRequest: "<a href=\"/invitations/request\">fordern Sie eine öffentlich an</a>."
   NotYetAUserChatInvitation: "fordern Sie eine im <a href=\"/chat\">Chat</a> an."
   
@@ -460,14 +491,17 @@ und um sie anderen eingeloggten Benutzern anzuzeigen."
   ModerationLog: "Moderation-Log"
   DateTime: "Datum/Uhrzeit"
   Moderator: Moderator
+  ModeratorLabel: "Moderator:"
   StoryCommentUserActionReason: "Artikel/Kommentar/Benutzer, Handlung, Grund"
   StoryLabel: "Artikel:"
   CommentBy: "Kommentar von"
   CommentOn: "über"
   User: Benutzer
+  Users: Benutzer
   DeletedUser: "gelöscht"
   ActionLabel: "Handlung:"
   ReasonLabel: "Grund:"
+  FilterAction: Filtern
   
   # app/views/password_reset/password_reset_link.text.erb
   PasswordResetMailBody: "Hallo %{user_email},
@@ -477,7 +511,8 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   # app/views/search/index.html.erb
   Search: Suche
   Include: Filtern nach
-  OrderBy: Sortieren nach
+  SearchByLabel: "Suchen nach:"
+  OrderByLabel: "Sortieren nach:"
   IncludeAll: Allem   
   IncludeStories: Artikeln   
   IncludeComments: Kommentaren
@@ -490,11 +525,13 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
     few: "%{count} Ergebnisse für"
     many: "%{count} Ergebnisse für"
     other: "%{count} Ergebnisse für"
+  SearchByDomainAndTag: Sie können nach einer Domain mit `domain:example.com` und nach einem Tag mit `tag:meta` suchen.
   
   # app/views/settings/index.html.erb
   ViewProfile: "Profil ansehen"
-  AccountSettings: Account-Einstellungen
+  AccountSettings: "Account-Einstellungen"
   UsernameLabel: "Benutzername:"
+  CurrentPasswordLabel: "Derzeitiges Passwort:"
   NewPasswordLabel: "Neues Passwort:"
   ConfirmPasswordLabel: "Passwort wiederholen:"
   EmailAddressLabel: "E-Mail-Adresse:"
@@ -510,7 +547,7 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   ReceiveEmailLabel: "E-Mail bekommen:"
   ReceivePushoverAlertLabel: "Pushover-Benachrichtigung bekommen:"
   RequiresPushover: "benötigt Pushover-Abonnement"
-  ShowInYourThreadsLabel: "Unter <a href=\"/threads\">Deinen Threads</a> anzeigen"
+  ShowInYourThreadsLabel: "Unter <a href=\"/threads\">Meine Threads</a> anzeigen"
   SubmittedStoryCommentSettings: "Kommentar-Einstellungen bei geposteten Threads"
   MailingListSettings: "Mailing-Liste-Einstellungen"
   MailingListSettingsText: "Wenn die Option aktiviert wird, bekommen Sie alle Artikel
@@ -532,18 +569,37 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   SaveAllSettings: "Alle Einstellungen speichern"
   InviteNewUser: "Einen neuen Nutzer einladen"
   DeleteAccount: "Account löschen"
-  DeleteAccountText: "Um Ihren Account zu löschen, geben Sie bitte Ihr Passwort ein.
-    Ihr Account wird mit dem Status \"gelöscht\" versehen. 
-    Ihre Kommentare werden als gelöscht gekennzeichnet und können nicht mehr von anderen Nutzern gelesen werden. Ihre persönlichen Nachrichten werden gelöscht. Ihre geteilten Inhalte werden nicht gelöscht.
-    Ihr Benutzername bleibt reserviert und kann nicht mit einem anderen Account verknüpft werden."
+  ToDeleteAccountVerifyPassword: "Um Ihren Account zu löschen, geben Sie bitte Ihr Passwort ein."
+  AccountPutInDisabledState: "Ihr Account wird mit dem Status \"gelöscht\" markiert."
+  UsernameReserved: "Ihr Benutzername bleibt reserviert und kann somit nicht mit einem anderen Account verknüpft werden."
+  PrivateMessagesDeleted: "Ihre persönlichen Nachrichten werden gelöscht."
+  SubmittedStoriesNotDeleted: "Ihre geteilten Inhalte werden nicht gelöscht."
+  NegativeCommentsDeletedDisownComments: "Ihre negativ bewerteten Kommentare werden gelöscht und Sie können auf \"Komentare anonymisieren\" unten klicken, wenn Sie wollen, dass
+  alle ihre Kommentare mit dem Vermerk \"<a href=\"/u/inactive-user\">inaktiver Benutzer</a>\" als Autor angezeigt werden."
+  DisownCommentsLabel: "Kommentare anonymisieren:"
+  IAmSureLabel: "Ich bin mir sicher:"
   VerifyPasswordLabel: "Passwort überprüfen"
-  DeleteMyAccount: "Account unwiderruflich löschen"
+  YesDeleteMyAccount: "Ja, ich möchte meinen Account löschen"
+  ExternalAccounts: Externe Accounts
+  AvatarCachedFromGravatarIcon: "Ihr Avatar wird vom Gravatar-Icon für Ihre E-Mail-Adresse gechached."
+  ExpireCache: "Cache löschen"
+  LinkedToAccount: "Mit folgendem Account verbunden:"
+  DisconnectAction: "Sich abmelden"
+  ConnectAction: "Sich anmelden"
+  SecuritySettings: Sicherheitseinstellungen
+  TwoFactorAuthLabel: "Zwei-Faktor-Authentifizierung:"
+  Enabled: An
+  Disabled: Aus
+  Disable: Ausschalten
+  Enable: Aktivieren
+  YouCannotSendInvitations: "Sie dürfen keine Einladungen verschicken:"
   
   # app/views/signup/index.html.erb
   CreateAnAccount: "Account erstellen"
   SignupSummary: "Das Registrieren erfolgt derzeit nur auf Einladung, um Spam zu bekämpfen und um die Verantwortlichkeit zu fördern. Wenn Sie jemanden kennen, der bereits einen <a href=\"/u/\">Benutzer-Account</a> besitzt, bitten Sie ihn/sie um eine Einladung oder "
   RequestOnePublicly: "<a href=\"/invitations/request\">fordern Sie eine öffentlich an</a>."
   RequestOneInChat: "fordern Sie eine im <a href=\"/chat\">Chat</a> an."
+  NotAUserSignUp: Sie haben noch keinen Benutzer-Account? <a href="/invitations/open">Erstellen Sie einen hier</a>.
   
   # app/views/signup/invite.html.erb
   PassAlongAnInvitation: "Einladung weiterreichen"
@@ -580,11 +636,15 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   GuidelinesButton: "Richlinien zum Teilen von Inhalten"
   GuidelinesText: >
           <li><p>
-          Um mühelos eine in Ihrem Browser offene Seite auf %s zu teilen, 
-          fügen Sie das Bookmarklet rechts Ihrer Lesezeichenleiste hinzu.
-          Beim Klicken auf das Bookmarklet werden Sie auf diese Seite mit
-          vorausgefülltem Link und Titel weitergeleitet.
+          Passen Sie den Artikeltitel nicht an, es sei denn dem originalen Titel
+          fehlt es an Kontext oder an Klarheit. <strong>Entfernen Sie bitte vom Titel irrelevante Informationen wie der Name der Webseite, der Rubrik oder des Autors. </strong>
           </p></li>
+
+          <li><p>
+          Wenn der Artikel älter als ca ein Jahr ist, fügen Sie bitte das
+          Veröffentlichungsjahr zum Titel in Klammern hinzu.
+          </p></li>
+
           <li><p>
           Beim Teilen einer URL ist das Textfeld optional und sollte nur 
           benutzt werden, wenn zusätzlicher Kontext oder Erklärungen zum Link
@@ -592,22 +652,21 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
           behalten werden, sodass Artikel und Kommentar getrennt von einander
           bewertet werden können.
           </p></li>
+
           <li><p>
-          Passen Sie Artikeltitel nicht an, es sei denn dem originalen Titel
-          fehlt es an Kontext oder an Klarheit.
-          <strong>Entfernen Sie bitte vom Titel irrelevante Informationen wie
-          der Name der Webseite oder der Rubrik.</strong>
-          </p></li>
-          <li><p>
-          Wenn kein Tag zum Inhalt des geteilten Links passt, sind die Chancen 
+          Wenn kein <a href="/tags">Tag</a> zum Inhalt des geteilten Links passt, sind die Chancen 
           hoch, dass er auf diese Webseite nicht gehört. Benutzen sie keine extra 
           Tags, wenn sie nicht im Fokus des Artikels stehen.
           </p></li>
-          <li><p>
-          Wenn der Artikel älter als ca ein Jahr ist, fügen Sie bitte das
-          Veröffentlichungsjahr zum Titel in Klammern hinzu.
-          </p></li>
 
+          <li><p>
+          Um mühelos eine in Ihrem Browser offene Seite auf %s zu teilen, 
+          fügen Sie das Bookmarklet rechts Ihrer Lesezeichenleiste hinzu.
+          Beim Klicken auf das Bookmarklet werden Sie auf diese Seite mit
+          vorausgefülltem Link und Titel weitergeleitet.
+          
+
+  SubmitTo: "Auf %{website_name} teilen"
   Author: Autor
   Iam: "Ich bin"
   SubmitterIs: "Der Submitter ist"
@@ -632,6 +691,12 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
     other: "%{count} Kommentare"
   DeleteConfirmation: "Sind Sie sicher, dass Sie diesen Thread löschen wollen?"
   UndeleteConfirmation: "Sind Sie sicher, dass Sie diesen Thread nicht mehr löschen wollen?"
+  StoryRemovedBy: "Artikel entfernt vom"
+  moderator: Moderator
+  originalSubmitter: "ursprünglichen Poster"
+  editAction: bearbeiten
+  saveBookmark: "Lesezeichen hinzufügen"
+  unsaveBookmark: "Lesezeichen entfernen"
   
   # app/views/stories/edit.html.erb
   EditStory: "Artikel bearbeiten"
@@ -649,8 +714,7 @@ Jemand mit der IP-Adresse %{ip} hat eine Anfrage zum Zurücksetzen Ihres Account
   Submit: Posten
   
   # app/views/stories/show.html.erb
-  SourceUrlUnvailableCachedTextAvailable: "Ursprüngliche URL nicht verfügbar seit %{timeago}, gecachter Text
-    ist verfügbar"
+  SourceUrlUnvailableCachedTextAvailable: "Ursprüngliche URL nicht verfügbar seit %{timeago}, gecachter Text ist verfügbar"
   StoryContentCopyright: "All story content copyright of its respective owner."
   
   # app/views/stories/suggest.html.erb

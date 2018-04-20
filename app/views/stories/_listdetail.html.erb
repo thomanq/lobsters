@@ -23,8 +23,8 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
           break_long_words(story.title) %></a>
       <% end %>
       <% if story.is_gone? %>
-        [Story removed by <%= story.is_moderated? ? "moderator" :
-          "original submitter" %>]
+        [ <%= t :StoryRemovedBy %> <%= story.is_moderated? ? t("moderator") :
+          t("originalSubmitter") %>]
       <% end %>
     </span>
     <% if story.markeddown_description.present? %>
@@ -69,9 +69,9 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
                 avatar_img(ms.user, 16) %></a>
             <% end %>
             <% if story.user_is_author? %>
-              authored by
+              <%=t :authoredby %>
             <% else %>
-              via
+              <%=t :via %>
             <% end %>
             <a href="/u/<%= ms.user.username %>" class="<%=
               ms.html_class_for_user %>"><%= ms.user.username %></a>
@@ -79,7 +79,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
             <%= time_ago_in_words_label(ms.created_at) %>
             <% if ms.is_editable_by_user?(@user) %>
               |
-              <a href="<%= edit_story_path(ms.short_id) %>">edit</a>
+              <a href="<%= edit_story_path(ms.short_id) %>"><%= t :editAction %></a>
             <% end %>
           </span>
         <% end %>
@@ -123,7 +123,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
         <% if story.is_editable_by_user?(@user) %>
           |
           <a href="<%= edit_story_path(story.short_id) %>" class="<%=
-            story.has_suggestions? ? "story_has_suggestions" : "" %>">edit</a>
+            story.has_suggestions? ? "story_has_suggestions" : "" %>"><%= t :editAction %></a>
         <% end %>
         <% if story.can_have_suggestions_from_user?(@user) %>
           | <%= link_to "suggest", story_suggest_path(story.short_id),
@@ -147,11 +147,11 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
             (hidden by <%= pluralize(story.hider_count, "user") %>)
           <% end %>
           <% if story.is_saved_by_cur_user %>
-            | <%= link_to "unsave", story_unsave_path(story.short_id),
-              :class => "saver" %>
+            | <%= link_to t("unsaveBookmark"), story_unsave_path(story.short_id),
+              :class => "saver", "data-opposite-bookmark-action" => t("saveBookmark") %>
           <% else %>
-            | <%= link_to "save", story_save_path(story.short_id),
-              :class => "saver" %>
+            | <%= link_to t("saveBookmark"), story_save_path(story.short_id),
+              :class => "saver", "data-opposite-bookmark-action" => t("unsaveBookmark") %>
           <% end %>
         <% end %>
         <% if story.url.present? %>

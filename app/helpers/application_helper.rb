@@ -39,23 +39,23 @@ module ApplicationHelper
 
     @header_links = {
       root_path => { :title => @cur_url == "/" ? Rails.application.name : "Home" },
-      recent_path => { :title => "Recent" },
-      comments_path => { :title => "Comments" },
+      recent_path => { :title => t("Recent") },
+      comments_path => { :title => t("Comments") },
     }
 
     if @user
-      @header_links[threads_path] = { :title => "Your Threads" }
+      @header_links[threads_path] = { :title => t("YourThreads") }
     end
 
     if @user && @user.can_submit_stories?
-      @header_links[new_story_path] = { :title => "Submit Story" }
+      @header_links[new_story_path] = { :title => t("SubmitStory") }
     end
 
     if @user
-      @header_links[saved_path] = { :title => "Saved" }
+      @header_links[saved_path] = { :title => t("Saved") }
     end
 
-    @header_links[search_path] = { :title => "Search" }
+    @header_links[search_path] = { :title => t("Search") }
 
     @header_links.each do |k, v|
       v[:class] ||= []
@@ -77,24 +77,24 @@ module ApplicationHelper
       if (count = @user.unread_replies_count) > 0
         @right_header_links[replies_unread_path] = {
           :class => ["new_messages"],
-          :title => "#{@user.unread_replies_count} Reply".pluralize(count),
+          :title => "#{@user.unread_replies_count} " + t("Reply", :count => count),
         }
       else
-        @right_header_links[replies_path] = { :title => "Replies" }
+        @right_header_links[replies_path] = { :title => t("Replies") }
       end
 
       if (count = @user.unread_message_count) > 0
         @right_header_links[messages_path] = {
           :class => ["new_messages"],
-          :title => "#{@user.unread_message_count} Message".pluralize(count),
+          :title => "#{@user.unread_message_count} " + t("Message", :count => count),
         }
       else
-        @right_header_links[messages_path] = { :title => "Messages" }
+        @right_header_links[messages_path] = { :title => t("Messages") }
       end
 
       @right_header_links[settings_path] = { :title => "#{@user.username} (#{@user.karma})" }
     else
-      @right_header_links[login_path] = { :title => "Login" }
+      @right_header_links[login_path] = { :title => t("Login") }
     end
 
     @right_header_links.each do |k, v|

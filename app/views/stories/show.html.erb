@@ -12,11 +12,11 @@
 
   <% if @story.is_unavailable && @story.story_cache.present? %>
     <a id="story_text_expander"> 
-      <%= t:SourceUrlUnvailableCachedTextAvailable, :timeago => time_ago_in_words_label(@story.unavailable_at) %>   
+      <%= t :SourceUrlUnvailableCachedTextAvailable, :timeago => time_ago_in_words_label(@story.unavailable_at) %>   
     </a>
     <div id="collapsed_story_text">
       <p>
-      <em><%= t:StoryContentCopyright %></em>
+      <em><%= t :StoryContentCopyright %></em>
       </p>
 
       <div class="story_text">

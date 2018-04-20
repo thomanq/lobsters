@@ -4,14 +4,14 @@
   </div>
 
   <%= form_tag(moderations_path, :method => :get) do |f| %>
-    <label class="normal" for="moderator">Moderator:</label>
+    <label class="normal" for="moderator"><%= t :ModeratorLabel %></label>
     <%= select_tag 'moderator', options_for_select(@moderators, @moderator) %>
     <% @what.each do |type, checked| %>
       <%= check_box_tag "what[#{type}]", type, checked %>
-      <label class="normal" for="what_<%= type %>"><%= type.to_s.titlecase %></label>
+      <label class="normal" for="what_<%= type %>"><%= { "Stories" => t("Stories"), "Comments" => t("Comments"), "Users" => t("Users") }[type.to_s.titlecase] %></label>
     <% end %>
 
-    <input type="submit" value="Filter">
+    <input type="submit" value="<%= t :FilterAction %>">
   <% end %><br>
 
   <table class="data" width="100%" cellspacing=0>
@@ -28,7 +28,7 @@
         <a href="/messages?to=<%= mod.moderator.try(:username) %>"><%=
           mod.moderator.try(:username) %></a>
         <% elsif mod.is_from_suggestions? %>
-          <em>(Users)</em>
+          <em>(<%= t :Users %>)</em>
         <% end %></td>
       <td><% if mod.story %>
           <a href="<%= mod.story.comments_path %>"><%= t :StoryLabel %> <%= mod.story.title

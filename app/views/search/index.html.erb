@@ -7,11 +7,11 @@
     <div class="boxline">
       <%= text_field_tag "q", @search.q, { :size => 40 }.
         merge(@search.q.present? ? {} : { :autofocus => "autofocus" }) %>
-      <input type="submit" value="Search">
+      <input type="submit" value="<%= t :Search %>">
     </div>
 
     <div class="boxline">
-      <label class="required">Search:</label>
+      <label class="required"><%= t :SearchByLabel %></label>
 
       <%= radio_button_tag "what", "stories", @search.what == "stories" %>
         <label for="what_stories" class="normal"><%=t :IncludeStories %></label>
@@ -23,7 +23,7 @@
 
       <br>
 
-      <label class="required"><%=t :OrderBy %>:</label>
+      <label class="required"><%=t :OrderByLabel %></label>
 
       <%= radio_button_tag "order", "relevance", @search.order == "relevance" %>
         <label for="order_relevance" class="normal"><%=t :OrderByRelevance %></label>
@@ -79,6 +79,6 @@
   <% end %>
 <% else %>
   <div class="help">
-    Search by domain with `domain:example.com` and tag with `tag:meta`.
+      <%= t :SearchByDomainAndTag %>
   </div>
 <% end %>

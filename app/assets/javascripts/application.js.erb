@@ -47,17 +47,23 @@ var _Lobsters = Class.extend({
 
     var li = $(saverEl).closest(".story, .comment");
     var act;
+    var currentBookmarkAction = saverEl.innerHTML;
+    var oppositeBookmarkAction = saverEl.getAttribute("data-opposite-bookmark-action");
 
     if (li.hasClass("saved")) {
       act = "unsave";
       li.removeClass("saved");
+      saverEl.setAttribute("data-opposite-bookmark-action", currentBookmarkAction);
       saverEl.innerHTML = "save";
     }
     else {
       act = "save";
       li.addClass("saved");
+      saverEl.setAttribute("data-opposite-bookmark-action", currentBookmarkAction);
       saverEl.innerHTML = "unsave";
     }
+    saverEl.setAttribute("data-opposite-bookmark-action", currentBookmarkAction);
+    saverEl.innerHTML = oppositeBookmarkAction;
 
     $.post("/stories/" + li.attr("data-shortid") + "/" + act);
   },

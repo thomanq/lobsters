@@ -61,7 +61,7 @@
               v[:title] %></a>
           <% end %>
           <% if !@user && Rails.application.open_signups? %>
-            <strong><a href="/invitations/open" class="signup-text">Sign Up Now</a></strong>
+            <strong><a href="/invitations/open" class="signup-text"><%= t :SignUpNow %></a></strong>
           <% end %>
         </span>
       </div>
@@ -92,22 +92,22 @@
           <%= render :partial => "layouts/footer" %>
         <% else %>
           <% if !@user && Rails.application.open_signups? %>
-            <a href="/invitations/open">Join <%= Rails.application.name %></a>
+            <a href="/invitations/open"><%= t :JoinAppName, :app_name => Rails.application.name %></a>
           <% end %>
-          <a href="/moderations">Moderation Log</a>
+          <a href="/moderations"><%= t :ModerationLog %></a>
           <% if @user && @user.can_see_invitation_requests? &&
           (iqc = InvitationRequest.verified_count) > 0 %>
-            <a href="/invitations">Invitation Queue (<%= iqc %>)</a>
+            <a href="/invitations"> <%= t :InvitationQueueCount, :count =>iqc %></a>
           <% end %>
           <% if @user && @user.is_moderator? &&
           (hrc = HatRequest.count) > 0 %>
-            <a href="/hats/requests">Hat Requests (<%= hrc %>)</a>
+            <a href="/hats/requests"> <%= t :HatRequestsCount, :count => hrc %></a>
           <% else %>
-            <a href="/hats">Hats</a>
+            <a href="/hats"><%= t :Hats %></a>
           <% end %>
-          <a href="/chat">Chat</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/about">About</a>
+          <a href="/chat"><%= t :Chat %></a>
+          <a href="/privacy"><%= t :Privacy %></a>
+          <a href="/about"><%= t :AboutAppName, :app_name => Rails.application.name %></a>
         <% end %>
       </div>
       <div class="clear"></div>

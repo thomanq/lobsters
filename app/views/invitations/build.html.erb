@@ -14,7 +14,7 @@
   <%= form_for @invitation_request,
   :url => create_invitation_by_request_path do |f| %>
     <p>
-    <%= f.label :name, "Name (not username):" %>
+    <%= f.label :name, t("NameNotUsernameLabel") %>
     <%= f.text_field :name, :size => 30 %>
     <br />
 
@@ -26,8 +26,7 @@
     <%= f.text_field :memo, :size => 30 %>
     <br />
     <label></label>
-    <span class="na">URL to verify you (Personal website, GitHub account,
-      etc.)</span>
+    <span class="na"><%= t :UrlToVerifyYou %></span>
     </p>
 
     <p>
