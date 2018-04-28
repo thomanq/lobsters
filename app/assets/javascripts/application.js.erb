@@ -25,19 +25,17 @@ var _Lobsters = Class.extend({
 
     var li = $(hiderEl).closest(".story, .comment");
     var act;
-    var currentAction = hiderEl.innerHTML;
-    var oppositeAction = hiderEl.getAttribute("data-opposite-action");
 
     if (li.hasClass("hidden")) {
       act = "unhide";
-      li.removeClass("hidden");    
+      li.removeClass("hidden");
+      hiderEl.innerHTML = "<%= I18n.t :hide %>";
     }
     else {
       act = "hide";
       li.addClass("hidden");
+      hiderEl.innerHTML = "<%= I18n.t :unhide %>";
     }
-    hiderEl.setAttribute("data-opposite-action", currentAction);
-    hiderEl.innerHTML = oppositeAction;
 
     $.post("/stories/" + li.attr("data-shortid") + "/" + act);
   },
@@ -47,23 +45,17 @@ var _Lobsters = Class.extend({
 
     var li = $(saverEl).closest(".story, .comment");
     var act;
-    var currentBookmarkAction = saverEl.innerHTML;
-    var oppositeBookmarkAction = saverEl.getAttribute("data-opposite-bookmark-action");
 
     if (li.hasClass("saved")) {
       act = "unsave";
       li.removeClass("saved");
-      saverEl.setAttribute("data-opposite-bookmark-action", currentBookmarkAction);
-      saverEl.innerHTML = "save";
+      saverEl.innerHTML = "<%= I18n.t :saveBookmark %>";
     }
     else {
       act = "save";
       li.addClass("saved");
-      saverEl.setAttribute("data-opposite-bookmark-action", currentBookmarkAction);
-      saverEl.innerHTML = "unsave";
+      saverEl.innerHTML = "<%= I18n.t :unsaveBookmark %>";
     }
-    saverEl.setAttribute("data-opposite-bookmark-action", currentBookmarkAction);
-    saverEl.innerHTML = oppositeBookmarkAction;
 
     $.post("/stories/" + li.attr("data-shortid") + "/" + act);
   },

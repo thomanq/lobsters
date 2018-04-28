@@ -138,20 +138,20 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
           <% end %>
           <% if story.is_hidden_by_cur_user %>
             | <%= link_to t("unhide"), story_unhide_path(story.short_id),
-              :class => "hider", "data-opposite-action" => t("hide") %>
+              :class => "hider" %>
           <% else %>
             | <%= link_to t("hide"), story_hide_path(story.short_id),
-              :class => "hider", "data-opposite-action" => t("unhide") %>
+              :class => "hider" %>
           <% end %>
           <% if defined?(single_story) && single_story && story.hider_count > 0 %>
             (hidden by <%= pluralize(story.hider_count, "user") %>)
           <% end %>
           <% if story.is_saved_by_cur_user %>
             | <%= link_to t("unsaveBookmark"), story_unsave_path(story.short_id),
-              :class => "saver", "data-opposite-bookmark-action" => t("saveBookmark") %>
+              :class => "saver" %>
           <% else %>
             | <%= link_to t("saveBookmark"), story_save_path(story.short_id),
-              :class => "saver", "data-opposite-bookmark-action" => t("unsaveBookmark") %>
+              :class => "saver" %>
           <% end %>
         <% end %>
         <% if story.url.present? %>
