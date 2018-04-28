@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  delegate :t, to: I18n
+  
   belongs_to :user
   belongs_to :story,
              :inverse_of => :comments

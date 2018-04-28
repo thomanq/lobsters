@@ -231,6 +231,9 @@ de:
   CommentRemovedByModerator: "Kommentar entfernt von %{moderator_name}: %{reason}."
   NoReasonGiven: "Keine Begründung angegeben"
 
+  # app/models/story.rb
+  MustHaveOneNonMediaTagOrDoesntBelongHere: "Der Inhalt muss mindestens ein Tag haben, das kein Format-Tag ist (z.B. PDF, Video). Wenn kein Tag zu Ihrem Inhalt passt, gehört dieser vermötlich nicht hier."
+
   # app/views/ban_notification/notify.text.erb
   BanNotification: "Sie wurden von %{application_name} vom Benutzer %{banner_username} aus folgendem Grund gebannt:<br><br>%{reason}<br><br>Sie sind nicht mehr berechtigt, sich auf der Seite einzuloggen. Wenn Sie den Bann mit dem Moderator besprechen wollen, beantworten Sie diese E-Mail."
   
